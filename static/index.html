@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoSort - Waste Sorting Assistant</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="leaf-icon">&#127793;</span>
+                <h1>EcoSort</h1>
+            </div>
+            <p class="tagline">Your AI-Powered Waste Sorting Assistant</p>
+        </header>
+
+        <nav class="feature-tabs">
+            <button class="tab-btn active" data-tab="item-scanner">Item Scanner</button>
+            <button class="tab-btn" data-tab="bag-checker">Bag Quality Checker</button>
+        </nav>
+
+        <section class="intro">
+            <h2>How It Works</h2>
+            <div class="steps" id="itemScannerSteps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <p>Upload a photo of your waste item</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <p>Our AI identifies the item</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <p>Get the right bin recommendation</p>
+                </div>
+            </div>
+            <div class="steps" id="bagCheckerSteps" style="display: none;">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <p>Upload a photo of your filled bag</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <p>Select your bag color type</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <p>Get a quality score and feedback</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="upload-section">
+            <h2>Upload Your Item</h2>
+            <div class="upload-area" id="dropZone">
+                <div class="upload-content">
+                    <div class="upload-icon">&#128247;</div>
+                    <p>Drag & drop an image here</p>
+                    <p class="or-text">or</p>
+                    <label for="fileInput" class="file-label">Choose File</label>
+                    <input type="file" id="fileInput" accept="image/*" hidden>
+                </div>
+                <div class="preview-container" id="previewContainer" style="display: none;">
+                    <img id="imagePreview" alt="Preview">
+                    <button class="remove-btn" id="removeBtn">&#10005;</button>
+                </div>
+            </div>
+            <button class="classify-btn" id="classifyBtn" disabled>Classify Item</button>
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Analyzing your item...</p>
+            </div>
+        </section>
+
+        <section class="results-section" id="resultsSection" style="display: none;">
+            <h2>Classification Result</h2>
+            <div class="result-card" id="resultCard">
+                <div class="bin-icon" id="binIcon"></div>
+                <h3 id="itemName">Plastic Bottle</h3>
+                <div class="bin-recommendation" id="binRecommendation">
+                    <span class="bin-label">Place in:</span>
+                    <span class="bin-name" id="binName">Recycling</span>
+                </div>
+                <div class="confidence" id="confidenceLabel">Confidence: High</div>
+            </div>
+
+            <div class="sustainability-card">
+                <h3>Your Environmental Impact</h3>
+                <div class="impact-stats">
+                    <div class="stat">
+                        <div class="stat-icon">&#9851;</div>
+                        <div class="stat-value" id="wasteSaved">0g</div>
+                        <div class="stat-label">Waste Diverted</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-icon">&#127811;</div>
+                        <div class="stat-value" id="co2Saved">0g</div>
+                        <div class="stat-label">CO2 Saved</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-icon">&#128176;</div>
+                        <div class="stat-value" id="moneySaved">$0.00</div>
+                        <div class="stat-label">Money Saved</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="new-scan-btn" id="newScanBtn">Scan Another Item</button>
+        </section>
+
+        <section class="bag-checker-section" id="bagCheckerSection" style="display: none;">
+            <h2>Bag Quality Checker</h2>
+            <p class="section-subtitle">Upload a photo of your filled garbage bag to check if it's properly sorted</p>
+            
+            <div class="bag-type-selector">
+                <label>Select your bag color:</label>
+                <div class="bag-options">
+                    <button class="bag-option active" data-bag="green">
+                        <span class="bag-color-dot green"></span>
+                        Green (Compost)
+                    </button>
+                    <button class="bag-option" data-bag="blue">
+                        <span class="bag-color-dot blue"></span>
+                        Blue (Recycling)
+                    </button>
+                    <button class="bag-option" data-bag="white">
+                        <span class="bag-color-dot white"></span>
+                        White (Landfill)
+                    </button>
+                </div>
+            </div>
+
+            <div class="upload-area" id="bagDropZone">
+                <div class="upload-content" id="bagUploadContent">
+                    <div class="upload-icon">&#128188;</div>
+                    <p>Drag & drop a bag photo here</p>
+                    <p class="or-text">or</p>
+                    <label for="bagFileInput" class="file-label">Choose File</label>
+                    <input type="file" id="bagFileInput" accept="image/*" hidden>
+                </div>
+                <div class="preview-container" id="bagPreviewContainer" style="display: none;">
+                    <img id="bagImagePreview" alt="Bag Preview">
+                    <button class="remove-btn" id="bagRemoveBtn">&#10005;</button>
+                </div>
+            </div>
+            <button class="classify-btn bag-check-btn" id="checkBagBtn" disabled>Check Bag Quality</button>
+            <div class="loading" id="bagLoading">
+                <div class="spinner"></div>
+                <p>Analyzing your bag...</p>
+            </div>
+        </section>
+
+        <section class="bag-results-section" id="bagResultsSection" style="display: none;">
+            <h2>Bag Quality Report</h2>
+            
+            <div class="score-card" id="scoreCard">
+                <div class="score-circle" id="scoreCircle">
+                    <span class="score-value" id="scoreValue">85</span>
+                    <span class="score-label">Score</span>
+                </div>
+                <div class="grade-badge" id="gradeBadge">B</div>
+                <div class="verdict" id="verdict">
+                    <span class="verdict-icon" id="verdictIcon">&#10004;</span>
+                    <span class="verdict-text" id="verdictText">Properly Sorted</span>
+                </div>
+            </div>
+
+            <div class="analysis-card">
+                <h3>Items Detected</h3>
+                <div class="items-list" id="itemsDetected">
+                    <span class="item-tag">Banana peel</span>
+                    <span class="item-tag">Coffee grounds</span>
+                </div>
+            </div>
+
+            <div class="issues-card" id="issuesCard" style="display: none;">
+                <h3>Contamination Issues</h3>
+                <ul class="issues-list" id="issuesList"></ul>
+            </div>
+
+            <div class="explanation-card">
+                <h3>Analysis</h3>
+                <p id="explanationText">Your compost bag looks well-sorted with proper organic waste.</p>
+            </div>
+
+            <div class="suggestions-card" id="suggestionsCard">
+                <h3>Suggestions for Improvement</h3>
+                <ul class="suggestions-list" id="suggestionsList"></ul>
+            </div>
+
+            <div class="confidence-notice" id="confidenceNotice">
+                <span class="notice-icon">&#9888;</span>
+                <span id="confidenceText">Confidence: Medium - Some items may not be clearly visible</span>
+            </div>
+
+            <div class="limitations-notice">
+                <strong>Limitations:</strong> This analysis uses AI image recognition and may not detect all items. Results are based on generic recycling guidelines and may vary by location. Always check local recycling rules.
+            </div>
+
+            <button class="new-scan-btn" id="newBagCheckBtn">Check Another Bag</button>
+        </section>
+
+        <section class="total-impact-section">
+            <h2>Your Total Impact</h2>
+            <div class="total-stats">
+                <div class="total-stat">
+                    <div class="total-value" id="totalWaste">0</div>
+                    <div class="total-label">Items Sorted</div>
+                </div>
+                <div class="total-stat">
+                    <div class="total-value" id="totalWasteDiverted">0g</div>
+                    <div class="total-label">Total Waste Diverted</div>
+                </div>
+                <div class="total-stat">
+                    <div class="total-value" id="totalCo2">0g</div>
+                    <div class="total-label">Total CO2 Saved</div>
+                </div>
+                <div class="total-stat">
+                    <div class="total-value" id="totalMoney">$0.00</div>
+                    <div class="total-label">Total Savings</div>
+                </div>
+            </div>
+            <button class="reset-btn" id="resetBtn">Reset Stats</button>
+        </section>
+
+        <section class="bin-guide">
+            <h2>Bin Guide</h2>
+            <div class="bins">
+                <div class="bin recycling">
+                    <div class="bin-guide-icon">&#9851;</div>
+                    <h4>Recycling</h4>
+                    <p>Plastics, metals, glass, paper, cardboard</p>
+                </div>
+                <div class="bin compost">
+                    <div class="bin-guide-icon">&#127793;</div>
+                    <h4>Compost</h4>
+                    <p>Food scraps, yard waste, organic matter</p>
+                </div>
+                <div class="bin landfill">
+                    <div class="bin-guide-icon">&#128465;</div>
+                    <h4>Landfill</h4>
+                    <p>Non-recyclable items, mixed materials</p>
+                </div>
+                <div class="bin e-waste">
+                    <div class="bin-guide-icon">&#128268;</div>
+                    <h4>E-Waste</h4>
+                    <p>Electronics, batteries, cables</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Made with &#127793; for a greener planet</p>
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

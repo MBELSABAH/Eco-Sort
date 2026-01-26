@@ -1,0 +1,130 @@
+You are acting as a product designer, computer vision engineer, and hackathon judge.
+
+IMPORTANT CONTEXT (MUST FOLLOW)
+
+You have already helped build a working version of a garbage sorting web application for this project.
+
+⚠️ Do NOT redesign or restart the app from scratch.
+Your task is to extend and build upon the existing implementation, structure, and assumptions you already created.
+
+EXISTING FEATURES (ALREADY BUILT — DO NOT CHANGE)
+
+Item Scanner
+
+User uploads or takes a photo of a single waste item
+
+App tells:
+
+Which bin the item belongs in
+
+Which bag color it goes into (green / blue / white)
+
+NEW FEATURE TO ADD (EXTEND, DO NOT REMOVE)
+
+Bag Quality Checker
+
+A separate feature with its own dedicated image upload section
+
+User uploads a photo of an already-filled garbage bag
+
+App must:
+
+Evaluate whether the bag is properly sorted
+
+Return a quality score (label, grade, or percentage)
+
+Explain why the bag is not properly sorted (if applicable)
+
+Provide clear, actionable suggestions on how to improve the sorting
+(e.g., “plastic packaging detected in compost bag,”
+“mixed materials visible — remove recyclables”)
+
+⚠️ The Item Scanner and Bag Quality Checker must have
+two clearly separate image upload areas and user flows.
+
+STRICT RULES (NON-NEGOTIABLE)
+
+DO NOT hallucinate.
+
+Do not invent recycling laws, local policies, datasets, or perfect AI accuracy.
+
+Assume generic/common recycling rules and explicitly state this.
+
+If computer vision is used, clearly specify whether it is:
+
+a pretrained image model
+
+rule-based estimation
+
+or demo-level approximation
+
+Everything must be honest, limited, and achievable in a 24-hour hackathon.
+
+Do not delete, rename, or replace existing features unless explicitly told.
+
+TASK
+
+Incrementally extend the existing garbage sorting app by designing and integrating the Bag Quality Checker feature.
+
+REQUIRED OUTPUT STRUCTURE
+
+1. What Is Added (Only Additions)
+List exactly what is added on top of the existing app.
+
+2. Updated User Flow
+
+Item Scanner flow (unchanged)
+
+Bag Quality Checker flow (new, separate)
+
+3. Bag Quality Scoring Logic (Honest & Simple)
+
+What the score represents
+
+How the score is estimated
+
+How uncertainty and ambiguity are handled
+
+4. Feedback to the User
+
+Score format
+
+Explanation of why the bag received that score
+
+Specific guidance on how to fix or improve the sorting
+
+5. UI Integration
+How the new feature fits into the existing layout
+(e.g., second tab, second card, separate section).
+
+6. Backend / Logic Additions
+New logic, processing steps, or endpoints required.
+
+7. Limitations (Explicit and Visible)
+What the app cannot reliably detect or guarantee.
+
+8. 24-Hour Scope Check
+
+What is realistically buildable for the demo
+
+What is clearly future work
+
+OUTPUT STYLE RULES
+
+Be concise, technical, and clear
+
+No buzzwords or exaggerated claims
+
+Prefer simple logic + strong UX over complex models
+
+FINAL GOAL
+
+Extend the already-built garbage sorting web app into a credible, demo-ready tool where users can:
+
+Classify individual items and bag colors
+
+Evaluate a full garbage bag
+
+Understand mistakes and know how to fix them
+
+All while staying honest, realistic, and hackathon-safe.
