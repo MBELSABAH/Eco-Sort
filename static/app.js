@@ -24,7 +24,7 @@ const uploadSection = document.querySelector('.upload-section');
 let selectedFile = null;
 let selectedBagFile = null;
 let selectedBagType = 'green';
-const API_BASE_URL = "";
+const API_BASE_URL = "https://eco-sort-svvs.onrender.com";
 const HAS_BACKEND = API_BASE_URL.trim() !== "";
 
 const BIN_CONFIG = {
