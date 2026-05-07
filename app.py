@@ -2,11 +2,21 @@ import os
 import base64
 from flask import Flask, request, jsonify, send_from_directory
 from openai import OpenAI
+from flask_cors import CORS
 
 app = Flask(__name__, static_folder='static')
+CORS(app, resources={
+    r"/*": {
+        "origins": [
+            "https://mbelsabah.github.io",
+            "http://127.0.0.1:5000",
+            "http://localhost:5000"
+        ]
+    }
+})
 
 client = OpenAI(
-    api_key=os.environ.get("AI_INTEGRATIONS_OPENAI_API_KEY"),
+    api_key=os.environ.get("OPENAI_API_KEY") or os.environ.get("AI_INTEGRATIONS_OPENAI_API_KEY"),
     base_url=os.environ.get("AI_INTEGRATIONS_OPENAI_BASE_URL")
 )
 
@@ -40,6 +50,10 @@ def index():
 @app.route('/static/<path:path>')
 def serve_static(path):
     return send_from_directory('static', path)
+
+@app.route('/health', methods=['GET'])
+def health():
+    return jsonify({"status": "ok"})
 
 @app.route('/classify-image', methods=['POST'])
 def classify_image():
@@ -246,4 +260,5 @@ Be honest about limitations - if the image is unclear or you cannot identify ite
         }), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)

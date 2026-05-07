@@ -6,64 +6,77 @@ EcoSort is an AI-assisted waste sorting project with a Flask backend and a stati
 
 Frontend demo: [https://mbelsabah.github.io/Eco-Sort/](https://mbelsabah.github.io/Eco-Sort/)
 
-GitHub Pages only serves static files. It does **not** run the Flask server or OpenAI-powered endpoints.
+GitHub Pages serves only static files. It does **not** run Flask or OpenAI endpoints.
 
-## Architecture
+## Project Structure
 
-- `app.py`: Flask backend API and static serving for local/full deployment.
-- `static/index.html`, `static/styles.css`, `static/app.js`: Frontend UI.
-- Root `index.html`: GitHub Pages entry point that redirects to `static/index.html`.
+- `app.py`: Flask backend API and static serving.
+- `index.html`: Root GitHub Pages entry page (full EcoSort UI).
+- `static/index.html`: Frontend page used by Flask/local setup.
+- `static/styles.css`, `static/app.js`: Frontend assets.
 
 ## Backend Requirement for AI Features
 
-The image classification and bag quality analysis features require a deployed Flask backend.
+AI scanner features call the Flask backend and require deployment.
 
-In `static/app.js`, configure:
+In `static/app.js`:
 
 ```js
 const API_BASE_URL = "";
 ```
 
-- Keep it empty for GitHub Pages demo mode (UI works, API actions show a friendly backend-required message).
-- Set it to your deployed backend URL (example: `https://your-backend.onrender.com`) to enable live API calls.
+- Empty value = demo mode on GitHub Pages (friendly backend-required message).
+- Set to your backend URL after deployment to enable API features.
 
-## Run Locally (Full App)
+## Local Run (Flask)
 
 1. Install dependencies:
-
-```bash
-pip install flask openai
-```
-
-or with project tooling:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-2. Set your OpenAI key:
+2. Set environment variable:
 
 ```bash
 export OPENAI_API_KEY="your_api_key_here"
 ```
 
-3. Run Flask app:
+3. Run app:
 
 ```bash
 python app.py
 ```
 
-4. Open locally:
+4. Open:
 
 - [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
 
-## Deployment Notes
+## Render Deployment (Backend)
 
-- Use **GitHub Pages** for the static frontend demo.
-- Deploy the Flask backend separately on services like **Render**, **Replit**, or **Railway**.
-- After backend deployment, set `API_BASE_URL` in `static/app.js` to your backend URL.
+- Build command:
 
-## Security
+```bash
+pip install -r requirements.txt
+```
 
-- Do not commit API keys.
-- Keep backend secrets in environment variables only.
+- Start command:
+
+```bash
+gunicorn app:app
+```
+
+- Required environment variable:
+  - `OPENAI_API_KEY`
+
+- After backend is live, update `static/app.js`:
+
+```js
+const API_BASE_URL = "https://YOUR-RENDER-URL.onrender.com";
+```
+
+## Frontend + Backend Deployment Notes
+
+- Use GitHub Pages for the frontend demo: [https://mbelsabah.github.io/Eco-Sort/](https://mbelsabah.github.io/Eco-Sort/)
+- Deploy Flask backend separately (Render/Replit/Railway).
+- Keep secrets in environment variables only.
