@@ -1,6 +1,7 @@
 import os
 import base64
 import json
+import hashlib
 from datetime import datetime, timedelta
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
@@ -137,6 +138,26 @@ def serve_static(path):
 @app.route('/health', methods=['GET'])
 def health():
     return jsonify({"status": "ok"})
+
+@app.route('/debug/env', methods=['GET'])
+def debug_env():
+    management_id = MANAGEMENT_ID or ""
+    management_key = MANAGEMENT_KEY or ""
+
+    management_id_set = bool(management_id)
+    management_key_set = bool(management_key)
+
+    management_id_hash_prefix = hashlib.sha256(management_id.encode('utf-8')).hexdigest()[:8] if management_id_set else None
+    management_key_hash_prefix = hashlib.sha256(management_key.encode('utf-8')).hexdigest()[:8] if management_key_set else None
+
+    return jsonify({
+        "management_id_set": management_id_set,
+        "management_key_set": management_key_set,
+        "management_id_length": len(management_id),
+        "management_key_length": len(management_key),
+        "management_id_sha256_prefix": management_id_hash_prefix,
+        "management_key_sha256_prefix": management_key_hash_prefix
+    })
 
 @app.route('/api/user/register', methods=['POST'])
 def register_user():
