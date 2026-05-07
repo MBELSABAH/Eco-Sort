@@ -1565,10 +1565,12 @@ footer {
 }
 
 .bag-thumbs {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 6px;
-    margin-top: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 8px;
     position: relative;
     z-index: 1;
 }
@@ -1583,43 +1585,53 @@ footer {
 }
 
 .bag-thumb {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    padding: 4px;
-    border-radius: 10px;
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
     background: rgba(12, 26, 21, 0.75);
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: var(--foreground);
+    overflow: hidden;
     cursor: pointer;
     transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .bag-thumb img {
     width: 100%;
-    height: 36px;
+    height: 100%;
     object-fit: cover;
-    border-radius: 7px;
+    object-position: center;
+    display: block;
+    border-radius: 12px;
 }
 
 .bag-thumb-score {
-    font-size: 0.65rem;
-    color: var(--muted-foreground);
+    position: absolute;
+    left: 6px;
+    bottom: 6px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1;
+    color: #f8fafc;
+    background: rgba(7, 17, 13, 0.82);
+    border-radius: 999px;
+    padding: 5px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .bag-thumb-placeholder {
     width: 100%;
-    height: 36px;
-    border-radius: 7px;
+    height: 100%;
+    border-radius: 12px;
     background: rgba(19, 42, 34, 0.8);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.6rem;
+    font-size: 0.72rem;
     color: var(--muted-foreground);
     text-align: center;
-    padding: 0 4px;
+    padding: 10px;
 }
 
 .bag-thumb:hover {
@@ -2144,6 +2156,20 @@ footer {
     
     .steps {
         flex-direction: column;
+    }
+
+    .bag-thumbs {
+        gap: 8px;
+    }
+
+    .bag-thumb {
+        width: 90px;
+        height: 90px;
+    }
+
+    .bag-thumb-score {
+        font-size: 0.66rem;
+        padding: 4px 6px;
     }
     
     .upload-area {
