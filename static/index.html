@@ -115,6 +115,19 @@
             <h2>Bag Quality Checker</h2>
             <p class="section-subtitle">Upload a photo of your filled garbage bag to check if it's properly sorted</p>
             
+            <div class="bag-login-card" id="bagLoginCard">
+                <h3>Bag Checker Login</h3>
+                <div class="bag-login-fields" id="bagLoginFields">
+                    <input type="text" id="bagLoginUsername" placeholder="Username" autocomplete="username">
+                    <input type="password" id="bagLoginPassword" placeholder="Password" autocomplete="current-password">
+                    <button class="classify-btn" id="bagLoginBtn" type="button">Log In</button>
+                </div>
+                <div class="bag-login-actions" id="bagLogoutActions" style="display: none;">
+                    <button class="classify-btn" id="bagLogoutBtn" type="button">Log Out</button>
+                </div>
+                <p class="bag-login-message" id="bagLoginMessage"></p>
+            </div>
+
             <div class="bag-type-selector">
                 <label>Select your bag color:</label>
                 <div class="bag-options">

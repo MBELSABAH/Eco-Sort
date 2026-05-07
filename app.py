@@ -3,8 +3,10 @@ import base64
 from flask import Flask, request, jsonify, send_from_directory
 from openai import OpenAI
 from flask_cors import CORS
+from werkzeug.exceptions import RequestEntityTooLarge
 
 app = Flask(__name__, static_folder='static')
+app.config['MAX_CONTENT_LENGTH'] = 8 * 1024 * 1024
 CORS(app, resources={
     r"/*": {
         "origins": [
@@ -54,6 +56,24 @@ def serve_static(path):
 @app.route('/health', methods=['GET'])
 def health():
     return jsonify({"status": "ok"})
+
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.get_json(silent=True) or {}
+    username = data.get('username', '')
+    password = data.get('password', '')
+
+    expected_username = os.environ.get("BAG_CHECKER_USERNAME")
+    expected_password = os.environ.get("BAG_CHECKER_PASSWORD")
+    access_token = os.environ.get("BAG_CHECKER_ACCESS_TOKEN")
+
+    if not expected_username or not expected_password or not access_token:
+        return jsonify({"ok": False, "error": "Login is not configured on the server"}), 500
+
+    if username == expected_username and password == expected_password:
+        return jsonify({"ok": True, "token": access_token})
+
+    return jsonify({"ok": False, "error": "Invalid username or password"}), 401
 
 @app.route('/classify-image', methods=['POST'])
 def classify_image():
@@ -155,6 +175,15 @@ Be specific about the item name and accurate with the bin classification."""
 
 @app.route('/check-bag', methods=['POST'])
 def check_bag():
+    auth_header = request.headers.get("Authorization", "")
+    expected_token = os.environ.get("BAG_CHECKER_ACCESS_TOKEN")
+    provided_token = ""
+    if auth_header.startswith("Bearer "):
+        provided_token = auth_header[7:].strip()
+
+    if not expected_token or provided_token != expected_token:
+        return jsonify({"error": "Bag checker login required"}), 401
+
     if 'image' not in request.files:
         return jsonify({"error": "No image provided"}), 400
     
@@ -258,6 +287,10 @@ Be honest about limitations - if the image is unclear or you cannot identify ite
             "error": "Failed to analyze bag. Please try again.",
             "details": str(e)
         }), 500
+
+@app.errorhandler(RequestEntityTooLarge)
+def handle_large_file(_error):
+    return jsonify({"error": "File is too large. Maximum upload size is 8 MB."}), 413
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))

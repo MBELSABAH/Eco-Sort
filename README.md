@@ -2,33 +2,18 @@
 
 EcoSort is an AI-assisted waste sorting project with a Flask backend and a static frontend.
 
-## Live Demo (GitHub Pages)
+## Live Frontend
 
-Frontend demo: [https://mbelsabah.github.io/Eco-Sort/](https://mbelsabah.github.io/Eco-Sort/)
+- GitHub Pages: [https://mbelsabah.github.io/Eco-Sort/](https://mbelsabah.github.io/Eco-Sort/)
 
-GitHub Pages serves only static files. It does **not** run Flask or OpenAI endpoints.
+GitHub Pages serves static files only. AI features require the backend.
 
-## Project Structure
+## Features
 
-- `app.py`: Flask backend API and static serving.
-- `index.html`: Root GitHub Pages entry page (full EcoSort UI).
-- `static/index.html`: Frontend page used by Flask/local setup.
-- `static/styles.css`, `static/app.js`: Frontend assets.
+- Item Scanner: public (uses `/classify-image`).
+- Bag Quality Checker: protected login (uses `/login` + `/check-bag` with bearer token).
 
-## Backend Requirement for AI Features
-
-AI scanner features call the Flask backend and require deployment.
-
-In `static/app.js`:
-
-```js
-const API_BASE_URL = "";
-```
-
-- Empty value = demo mode on GitHub Pages (friendly backend-required message).
-- Set to your backend URL after deployment to enable API features.
-
-## Local Run (Flask)
+## Local Run
 
 1. Install dependencies:
 
@@ -36,13 +21,16 @@ const API_BASE_URL = "";
 pip install -r requirements.txt
 ```
 
-2. Set environment variable:
+2. Set environment variables:
 
 ```bash
-export OPENAI_API_KEY="your_api_key_here"
+export OPENAI_API_KEY="your_openai_key"
+export BAG_CHECKER_USERNAME="your_username"
+export BAG_CHECKER_PASSWORD="your_password"
+export BAG_CHECKER_ACCESS_TOKEN="your_generated_token"
 ```
 
-3. Run app:
+3. Run:
 
 ```bash
 python app.py
@@ -52,7 +40,7 @@ python app.py
 
 - [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
 
-## Render Deployment (Backend)
+## Render Deployment
 
 - Build command:
 
@@ -66,17 +54,21 @@ pip install -r requirements.txt
 gunicorn app:app
 ```
 
-- Required environment variable:
+- Required Render environment variables:
   - `OPENAI_API_KEY`
+  - `BAG_CHECKER_USERNAME`
+  - `BAG_CHECKER_PASSWORD`
+  - `BAG_CHECKER_ACCESS_TOKEN`
 
-- After backend is live, update `static/app.js`:
+## Frontend API Base URL
+
+In `static/app.js`, set:
 
 ```js
-const API_BASE_URL = "https://YOUR-RENDER-URL.onrender.com";
+const API_BASE_URL = "https://eco-sort-svvs.onrender.com";
 ```
 
-## Frontend + Backend Deployment Notes
+## Security Notes
 
-- Use GitHub Pages for the frontend demo: [https://mbelsabah.github.io/Eco-Sort/](https://mbelsabah.github.io/Eco-Sort/)
-- Deploy Flask backend separately (Render/Replit/Railway).
-- Keep secrets in environment variables only.
+- Bag checker credentials are configured only in backend environment variables.
+- Do not commit secrets to GitHub.

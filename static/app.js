@@ -20,12 +20,20 @@ const bagResultsSection = document.getElementById('bagResultsSection');
 const newBagCheckBtn = document.getElementById('newBagCheckBtn');
 const bagCheckerSection = document.getElementById('bagCheckerSection');
 const uploadSection = document.querySelector('.upload-section');
+const bagLoginUsername = document.getElementById('bagLoginUsername');
+const bagLoginPassword = document.getElementById('bagLoginPassword');
+const bagLoginBtn = document.getElementById('bagLoginBtn');
+const bagLogoutBtn = document.getElementById('bagLogoutBtn');
+const bagLoginMessage = document.getElementById('bagLoginMessage');
+const bagLoginFields = document.getElementById('bagLoginFields');
+const bagLogoutActions = document.getElementById('bagLogoutActions');
 
 let selectedFile = null;
 let selectedBagFile = null;
 let selectedBagType = 'green';
 const API_BASE_URL = "https://eco-sort-svvs.onrender.com";
 const HAS_BACKEND = API_BASE_URL.trim() !== "";
+const BAG_TOKEN_KEY = 'bagCheckerAccessToken';
 
 const BIN_CONFIG = {
     recycling: {
@@ -108,6 +116,23 @@ function showBackendRequiredMessage(featureName) {
     alert(`${featureName} requires a deployed backend API. Set API_BASE_URL in static/app.js to enable this feature.`);
 }
 
+function setBagLoginMessage(message, type = '') {
+    bagLoginMessage.textContent = message;
+    bagLoginMessage.className = 'bag-login-message';
+    if (type) bagLoginMessage.classList.add(type);
+}
+
+function getBagToken() {
+    return sessionStorage.getItem(BAG_TOKEN_KEY) || '';
+}
+
+function updateBagLoginUi() {
+    const isLoggedIn = !!getBagToken();
+    bagLoginFields.style.display = isLoggedIn ? 'none' : 'grid';
+    bagLogoutActions.style.display = isLoggedIn ? 'block' : 'none';
+    setBagLoginMessage(isLoggedIn ? 'Logged in. You can use Bag Quality Checker.' : '', isLoggedIn ? 'success' : '');
+}
+
 async function postToApi(path, formData) {
     if (!HAS_BACKEND) {
         return {
@@ -146,6 +171,48 @@ async function postToApi(path, formData) {
             error: "Unable to reach backend. Check API_BASE_URL and backend availability."
         };
     }
+}
+
+async function loginBagChecker() {
+    if (!HAS_BACKEND) {
+        setBagLoginMessage('Backend is not configured.', 'error');
+        return;
+    }
+
+    const username = bagLoginUsername.value.trim();
+    const password = bagLoginPassword.value;
+    if (!username || !password) {
+        setBagLoginMessage('Enter username and password.', 'error');
+        return;
+    }
+
+    setBagLoginMessage('Signing in...');
+    bagLoginBtn.disabled = true;
+    try {
+        const normalizedBase = API_BASE_URL.replace(/\/$/, '');
+        const response = await fetch(`${normalizedBase}/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+        });
+        const data = await response.json();
+        if (!response.ok || !data.ok || !data.token) {
+            throw new Error(data.error || 'Login failed');
+        }
+        sessionStorage.setItem(BAG_TOKEN_KEY, data.token);
+        bagLoginPassword.value = '';
+        updateBagLoginUi();
+    } catch (error) {
+        setBagLoginMessage(error.message || 'Login failed.', 'error');
+    } finally {
+        bagLoginBtn.disabled = false;
+    }
+}
+
+function logoutBagChecker() {
+    sessionStorage.removeItem(BAG_TOKEN_KEY);
+    updateBagLoginUi();
+    setBagLoginMessage('Logged out.', 'success');
 }
 
 dropZone.addEventListener('dragover', (e) => {
@@ -366,11 +433,18 @@ function clearBagPreview() {
 }
 
 checkBagBtn.addEventListener('click', checkBagQuality);
+bagLoginBtn.addEventListener('click', loginBagChecker);
+bagLogoutBtn.addEventListener('click', logoutBagChecker);
 
 async function checkBagQuality() {
     if (!selectedBagFile) return;
     if (!HAS_BACKEND) {
         showBackendRequiredMessage('Bag quality checker');
+        return;
+    }
+    const bagToken = getBagToken();
+    if (!bagToken) {
+        setBagLoginMessage('Please log in to use the Bag Quality Checker.', 'error');
         return;
     }
     
@@ -383,9 +457,18 @@ async function checkBagQuality() {
     formData.append('bag_type', selectedBagType);
     
     try {
-        const result = await postToApi('/check-bag', formData);
-        if (!result.ok) throw new Error(result.error);
-        const data = result.data;
+        const normalizedBase = API_BASE_URL.replace(/\/$/, '');
+        const response = await fetch(`${normalizedBase}/check-bag`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${bagToken}`
+            },
+            body: formData
+        });
+        const data = await response.json();
+        if (!response.ok || data.error) {
+            throw new Error(data.error || 'Failed to analyze bag.');
+        }
         
         displayBagResults(data);
         
@@ -479,3 +562,4 @@ newBagCheckBtn.addEventListener('click', () => {
 });
 
 initStats();
+updateBagLoginUi();
