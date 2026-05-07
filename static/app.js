@@ -24,6 +24,8 @@ const uploadSection = document.querySelector('.upload-section');
 let selectedFile = null;
 let selectedBagFile = null;
 let selectedBagType = 'green';
+const API_BASE_URL = "";
+const HAS_BACKEND = API_BASE_URL.trim() !== "";
 
 const BIN_CONFIG = {
     recycling: {
@@ -102,6 +104,50 @@ function resetStats() {
     }
 }
 
+function showBackendRequiredMessage(featureName) {
+    alert(`${featureName} requires a deployed backend API. Set API_BASE_URL in static/app.js to enable this feature.`);
+}
+
+async function postToApi(path, formData) {
+    if (!HAS_BACKEND) {
+        return {
+            ok: false,
+            error: "Backend not configured. Set API_BASE_URL to your deployed Flask backend."
+        };
+    }
+
+    const normalizedBase = API_BASE_URL.replace(/\/$/, '');
+    const endpoint = `${normalizedBase}${path}`;
+
+    try {
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            body: formData
+        });
+
+        let data = {};
+        try {
+            data = await response.json();
+        } catch (_err) {
+            data = {};
+        }
+
+        if (!response.ok || data.error) {
+            return {
+                ok: false,
+                error: data.error || "Request failed. Please try again."
+            };
+        }
+
+        return { ok: true, data };
+    } catch (_error) {
+        return {
+            ok: false,
+            error: "Unable to reach backend. Check API_BASE_URL and backend availability."
+        };
+    }
+}
+
 dropZone.addEventListener('dragover', (e) => {
     e.preventDefault();
     dropZone.classList.add('dragover');
@@ -164,6 +210,10 @@ classifyBtn.addEventListener('click', classifyImage);
 
 async function classifyImage() {
     if (!selectedFile) return;
+    if (!HAS_BACKEND) {
+        showBackendRequiredMessage('AI item scanner');
+        return;
+    }
     
     loading.classList.add('active');
     classifyBtn.style.display = 'none';
@@ -173,16 +223,9 @@ async function classifyImage() {
     formData.append('image', selectedFile);
     
     try {
-        const response = await fetch('/classify-image', {
-            method: 'POST',
-            body: formData
-        });
-        
-        const data = await response.json();
-        
-        if (data.error) {
-            throw new Error(data.error);
-        }
+        const result = await postToApi('/classify-image', formData);
+        if (!result.ok) throw new Error(result.error);
+        const data = result.data;
         
         displayResults(data);
         updateStats(data.waste_saved_grams, data.co2_saved_grams, data.money_saved_cents);
@@ -326,6 +369,10 @@ checkBagBtn.addEventListener('click', checkBagQuality);
 
 async function checkBagQuality() {
     if (!selectedBagFile) return;
+    if (!HAS_BACKEND) {
+        showBackendRequiredMessage('Bag quality checker');
+        return;
+    }
     
     bagLoading.classList.add('active');
     checkBagBtn.style.display = 'none';
@@ -336,16 +383,9 @@ async function checkBagQuality() {
     formData.append('bag_type', selectedBagType);
     
     try {
-        const response = await fetch('/check-bag', {
-            method: 'POST',
-            body: formData
-        });
-        
-        const data = await response.json();
-        
-        if (data.error) {
-            throw new Error(data.error);
-        }
+        const result = await postToApi('/check-bag', formData);
+        if (!result.ok) throw new Error(result.error);
+        const data = result.data;
         
         displayBagResults(data);
         
