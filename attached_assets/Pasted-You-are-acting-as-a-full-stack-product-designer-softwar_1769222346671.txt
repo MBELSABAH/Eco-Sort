@@ -1,0 +1,207 @@
+You are acting as a full-stack product designer, software engineer, and hackathon judge.
+
+IMPORTANT CONTEXT (DO NOT IGNORE):
+You have already built a working waste-sorting web application with:
+
+Item scanning (single item → bin + bag color)
+
+Bag quality checking (bag photo → score + explanation + improvement tips)
+
+⚠️ Do NOT redesign the app from scratch.
+Your task is to extend the existing app, reuse existing logic and UI, and add simple role-based views.
+
+NEW HIGH-LEVEL GOAL
+
+Extend the app so it can be used by:
+
+Residents (users)
+
+PEI Waste Management team (management)
+
+Both roles must exist within the same website.
+
+ACCESS & ROLE HANDLING (SIMPLIFIED — NO REAL AUTH)
+Top-Right UI Requirement
+
+On the top-right corner of the website, show:
+
+User Access
+
+Management Access
+
+USER ACCESS (NO PASSWORDS)
+User “Account” Creation
+
+User is not required to log in with a password
+
+User simply enters:
+
+Name
+
+House number
+
+Submitting this form creates a user profile
+
+This profile represents one household
+
+⚠️ This is a demo-level identity system, not real authentication.
+
+MANAGEMENT ACCESS (SINGLE FIXED ENTRY)
+
+Only one management view exists
+
+Access is granted using a fixed demo credential:
+
+ID: 123
+
+Key: 123
+
+No signup, no multiple management accounts
+
+USER PORTAL REQUIREMENTS
+
+After entering name + house number, the user sees:
+
+1️⃣ Existing Features (UNCHANGED)
+
+Scan single item (bin + bag color)
+
+Check bag quality (score + explanation + improvement tips)
+
+2️⃣ Bag Submission (NEW)
+
+User can submit photos of their garbage bags
+
+Each submission:
+
+Is stored under the user’s house number
+
+Receives a sorting score
+
+3️⃣ Weekly User Summary
+
+Show:
+
+Total bags submitted this week
+
+Average sorting score for the week
+
+Days of the week showing which bag type is picked up
+
+4️⃣ Performance Points
+
+Users earn points based on sorting quality
+
+Points:
+
+Are rule-based
+
+Easy to understand
+
+Shown clearly in the user dashboard
+
+MANAGEMENT PORTAL REQUIREMENTS
+
+When management enters ID + key:
+
+1️⃣ Household List
+
+Show a table of:
+
+House number
+
+Name of resident
+
+Number of bags submitted
+
+Average sorting score
+
+2️⃣ Pickup Decision Support
+
+For each house:
+
+Show sorting performance
+
+Indicate:
+
+“OK for pickup”
+
+“Needs attention”
+
+⚠️ The system assists decision-making only and does not enforce rules.
+
+3️⃣ Feedback Loop
+
+Bag scores and management feedback:
+
+Affect user points
+
+Are visible in the user view
+
+DATA & LOGIC CONSTRAINTS (MANDATORY)
+
+DO NOT hallucinate.
+
+No invented PEI regulations or enforcement rules
+
+Assume generic waste-sorting logic
+
+Keep all logic:
+
+Rule-based
+
+Transparent
+
+Demo-appropriate
+
+Use simple storage (in-memory, JSON, or lightweight DB)
+
+REQUIRED OUTPUT STRUCTURE
+
+1. What Is Added (Only Additions)
+
+2. User & Management Flows
+
+3. Simple Data Model
+
+User (name, house number)
+
+Bag submissions
+
+Scores
+
+Points
+
+4. UI Layout
+
+Top-right access buttons
+
+User dashboard
+
+Management dashboard
+
+5. Backend Logic Overview
+
+6. Limitations (Explicit)
+
+7. 24-Hour Scope Check
+
+OUTPUT STYLE RULES
+
+Be honest and technical
+
+No buzzwords
+
+No over-engineering
+
+Prioritize clarity and demo readiness
+
+FINAL GOAL
+
+Extend the existing waste-sorting app into a two-role demo system where:
+
+Users easily participate with minimal friction
+
+Management gains visibility by house number
+
+The system is simple, believable, and hackathon-safe

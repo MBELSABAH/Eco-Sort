@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoSort - Waste Sorting Assistant</title>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
+    <canvas id="bgCanvas" aria-hidden="true"></canvas>
+    <div class="access-bar">
+        <button class="access-btn user-access" id="userAccessBtn">User Access</button>
+        <button class="access-btn mgmt-access" id="mgmtAccessBtn">Management Access</button>
+    </div>
+
     <div class="container">
         <header>
             <div class="logo">
@@ -16,260 +23,550 @@
             <p class="tagline">Your AI-Powered Waste Sorting Assistant</p>
         </header>
 
-        <nav class="feature-tabs">
-            <button class="tab-btn active" data-tab="item-scanner">Item Scanner</button>
-            <button class="tab-btn" data-tab="bag-checker">Bag Quality Checker</button>
-        </nav>
-
-        <section class="intro">
-            <h2>How It Works</h2>
-            <div class="steps" id="itemScannerSteps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <p>Upload a photo of your waste item</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <p>Our AI identifies the item</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <p>Get the right bin recommendation</p>
-                </div>
-            </div>
-            <div class="steps" id="bagCheckerSteps" style="display: none;">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <p>Upload a photo of your filled bag</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <p>Select your bag color type</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <p>Get a quality score and feedback</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="upload-section">
-            <h2>Upload Your Item</h2>
-            <div class="upload-area" id="dropZone">
-                <div class="upload-content">
-                    <div class="upload-icon">&#128247;</div>
-                    <p>Drag & drop an image here</p>
-                    <p class="or-text">or</p>
-                    <label for="fileInput" class="file-label">Choose File</label>
-                    <input type="file" id="fileInput" accept="image/*" hidden>
-                </div>
-                <div class="preview-container" id="previewContainer" style="display: none;">
-                    <img id="imagePreview" alt="Preview">
-                    <button class="remove-btn" id="removeBtn">&#10005;</button>
-                </div>
-            </div>
-            <button class="classify-btn" id="classifyBtn" disabled>Classify Item</button>
-            <div class="loading" id="loading">
-                <div class="spinner"></div>
-                <p>Analyzing your item...</p>
-            </div>
-        </section>
-
-        <section class="results-section" id="resultsSection" style="display: none;">
-            <h2>Classification Result</h2>
-            <div class="result-card" id="resultCard">
-                <div class="bin-icon" id="binIcon"></div>
-                <h3 id="itemName">Plastic Bottle</h3>
-                <div class="bin-recommendation" id="binRecommendation">
-                    <span class="bin-label">Place in:</span>
-                    <span class="bin-name" id="binName">Recycling</span>
-                </div>
-                <div class="confidence" id="confidenceLabel">Confidence: High</div>
-            </div>
-
-            <div class="sustainability-card">
-                <h3>Your Environmental Impact</h3>
-                <div class="impact-stats">
-                    <div class="stat">
-                        <div class="stat-icon">&#9851;</div>
-                        <div class="stat-value" id="wasteSaved">0g</div>
-                        <div class="stat-label">Waste Diverted</div>
+        <div id="landingView">
+            <section class="welcome-section">
+                <h2>Welcome to EcoSort</h2>
+                <p>Choose how you'd like to access the system:</p>
+                <div class="access-options">
+                    <div class="access-card" id="userCardBtn">
+                        <div class="access-icon">&#127968;</div>
+                        <h3>Resident Access</h3>
+                        <p>Sort items, check bags, submit for pickup, and track your eco-points</p>
                     </div>
-                    <div class="stat">
-                        <div class="stat-icon">&#127811;</div>
-                        <div class="stat-value" id="co2Saved">0g</div>
-                        <div class="stat-label">CO2 Saved</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-icon">&#128176;</div>
-                        <div class="stat-value" id="moneySaved">$0.00</div>
-                        <div class="stat-label">Money Saved</div>
+                    <div class="access-card" id="mgmtCardBtn">
+                        <div class="access-icon">&#128202;</div>
+                        <h3>Management Access</h3>
+                        <p>View household performance, manage pickups, and provide feedback</p>
                     </div>
                 </div>
+            </section>
+        </div>
+
+        <div id="userLoginView" style="display: none;">
+            <section class="login-section">
+                <h2>Resident Registration</h2>
+                <p class="section-subtitle">Enter your details to access your dashboard</p>
+                <form id="userLoginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="userName">Your Name</label>
+                        <input type="text" id="userName" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="houseNumber">House Number</label>
+                        <input type="text" id="houseNumber" placeholder="e.g., 123 or 45A" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Enter Dashboard</button>
+                </form>
+                <button class="back-btn" id="userBackBtn">Back</button>
+            </section>
+        </div>
+
+        <div id="mgmtLoginView" style="display: none;">
+            <section class="login-section">
+                <h2>Management Login</h2>
+                <p class="section-subtitle">Enter your credentials</p>
+                <form id="mgmtLoginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="mgmtId">ID</label>
+                        <input type="text" id="mgmtId" placeholder="Enter ID" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mgmtKey">Key</label>
+                        <input type="password" id="mgmtKey" placeholder="Enter Key" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Login</button>
+                    <p class="demo-hint">Management credentials are required.</p>
+                </form>
+                <button class="back-btn" id="mgmtBackBtn">Back</button>
+            </section>
+        </div>
+
+        <div id="userDashboard" style="display: none;">
+            <section class="user-header">
+                <div class="user-info">
+                    <h2>Welcome, <span id="userDisplayName">Resident</span>!</h2>
+                    <p>House #<span id="userDisplayHouse">123</span></p>
+                </div>
+                <div class="points-display">
+                    <span class="points-value" id="userPoints">0</span>
+                    <span class="points-label">Eco-Points</span>
+                    <div class="points-impact">
+                        <div class="impact-chip">
+                            <span class="impact-icon">&#127794;</span>
+                            <span class="impact-text"><span id="treeCredits">0</span> trees planted</span>
+                        </div>
+                        <div class="impact-chip">
+                            <span class="impact-icon">&#129365;</span>
+                            <span class="impact-text"><span id="farmCredits">0</span> local credits</span>
+                        </div>
+                        <div class="impact-chip">
+                            <span class="impact-icon">&#9851;</span>
+                            <span class="impact-text"><span id="co2Credits">0</span> kg CO2</span>
+                        </div>
+                    </div>
+                    <button class="redeem-btn" id="redeemBtn">Redeem</button>
+                </div>
+                <button class="logout-btn" id="userLogout">Logout</button>
+            </section>
+
+            <section class="weekly-summary">
+                <h3>This Week's Summary</h3>
+                <div class="summary-stats">
+                    <div class="summary-stat">
+                        <div class="summary-value" id="weeklyBags">0</div>
+                        <div class="summary-label">Bags Submitted</div>
+                    </div>
+                    <div class="summary-stat">
+                        <div class="summary-value" id="weeklyScore">--</div>
+                        <div class="summary-label">Avg Score</div>
+                    </div>
+                </div>
+                <div class="pickup-schedule">
+                    <h4>Pickup Schedule</h4>
+                    <div class="schedule-days" id="scheduleDisplay"></div>
+                </div>
+            </section>
+
+            <div class="feedback-section" id="feedbackSection" style="display: none;">
+                <h3>Management Feedback</h3>
+                <div id="feedbackList"></div>
             </div>
 
-            <button class="new-scan-btn" id="newScanBtn">Scan Another Item</button>
-        </section>
+            <nav class="feature-tabs user-tabs">
+                <button class="tab-btn active" data-tab="item-scanner">Item Scanner</button>
+                <button class="tab-btn" data-tab="bag-checker">Bag Submission</button>
+            </nav>
 
-        <section class="bag-checker-section" id="bagCheckerSection" style="display: none;">
-            <h2>Bag Quality Checker</h2>
-            <p class="section-subtitle">Upload a photo of your filled garbage bag to check if it's properly sorted</p>
-            
-            <div class="bag-login-card" id="bagLoginCard">
-                <h3>Bag Checker Login</h3>
-                <div class="bag-login-fields" id="bagLoginFields">
-                    <input type="text" id="bagLoginUsername" placeholder="Username" autocomplete="username">
-                    <input type="password" id="bagLoginPassword" placeholder="Password" autocomplete="current-password">
-                    <button class="classify-btn" id="bagLoginBtn" type="button">Log In</button>
+            <section class="intro">
+                <h2>How It Works</h2>
+                <div class="steps" id="itemScannerSteps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <p>Upload a photo of your waste item</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <p>Our AI identifies the item</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <p>Get the right bin recommendation</p>
+                    </div>
                 </div>
-                <div class="bag-login-actions" id="bagLogoutActions" style="display: none;">
-                    <button class="classify-btn" id="bagLogoutBtn" type="button">Log Out</button>
+                <div class="steps" id="bagCheckerSteps" style="display: none;">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <p>Upload a photo of your filled bag</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <p>Select your bag color type</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <p>Save each score and submit all bags together</p>
+                    </div>
                 </div>
-                <p class="bag-login-message" id="bagLoginMessage"></p>
+            </section>
+
+            <section class="upload-section" id="itemScannerSection">
+                <h2>Upload Your Item</h2>
+                <div class="upload-area" id="dropZone">
+                    <div class="upload-content">
+                        <div class="upload-icon">&#128247;</div>
+                        <p>Drag & drop an image here</p>
+                        <p class="or-text">or</p>
+                        <label for="fileInput" class="file-label">Add Photo</label>
+                        <input type="file" id="fileInput" accept="image/*" capture="environment" hidden>
+                    </div>
+                    <div class="preview-container" id="previewContainer" style="display: none;">
+                        <img id="imagePreview" alt="Preview">
+                        <button class="remove-btn" id="removeBtn">&#10005;</button>
+                    </div>
+                </div>
+                <button class="classify-btn" id="classifyBtn" disabled>Classify Item</button>
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Analyzing your item...</p>
+                </div>
+            </section>
+
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <h2>Classification Result</h2>
+                <div class="result-card" id="resultCard">
+                    <div class="bin-icon" id="binIcon"></div>
+                    <h3 id="itemName">Plastic Bottle</h3>
+                    <div class="bin-recommendation" id="binRecommendation">
+                        <span class="bin-label">Place in:</span>
+                        <span class="bin-name" id="binName">Recycling</span>
+                    </div>
+                    <div class="confidence" id="confidenceLabel">Confidence: High</div>
+                </div>
+
+                <div class="sustainability-card">
+                    <h3>Your Environmental Impact</h3>
+                    <div class="impact-stats">
+                        <div class="stat">
+                            <div class="stat-icon">&#9851;</div>
+                            <div class="stat-value" id="wasteSaved">0g</div>
+                            <div class="stat-label">Waste Diverted</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-icon">&#127811;</div>
+                            <div class="stat-value" id="co2Saved">0g</div>
+                            <div class="stat-label">CO2 Saved</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-icon">&#128176;</div>
+                            <div class="stat-value" id="moneySaved">$0.00</div>
+                            <div class="stat-label">Money Saved</div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="new-scan-btn" id="newScanBtn">Scan Another Item</button>
+            </section>
+
+            <section class="bag-checker-section" id="bagCheckerSection" style="display: none;">
+                <h2>Check Bags for Submission</h2>
+                <p class="section-subtitle">Scan each bag, review the score, then submit them together</p>
+                
+                <div class="bag-type-selector">
+                    <label>Select your bag color:</label>
+                    <div class="bag-options">
+                        <button class="bag-option active" data-bag="green">
+                            <span class="bag-color-dot green"></span>
+                            Green (Compost)
+                        </button>
+                        <button class="bag-option" data-bag="blue">
+                            <span class="bag-color-dot blue"></span>
+                            Blue (Recycling)
+                        </button>
+                        <button class="bag-option" data-bag="white">
+                            <span class="bag-color-dot white"></span>
+                            White (Waste)
+                        </button>
+                    </div>
+                </div>
+
+                <div class="upload-area" id="bagDropZone">
+                    <div class="upload-content" id="bagUploadContent">
+                        <div class="upload-icon">&#128188;</div>
+                        <p>Drag & drop a bag photo here</p>
+                        <p class="or-text">or</p>
+                        <label for="bagFileInput" class="file-label">Add Photo</label>
+                        <input type="file" id="bagFileInput" accept="image/*" capture="environment" hidden>
+                    </div>
+                    <div class="preview-container" id="bagPreviewContainer" style="display: none;">
+                        <img id="bagImagePreview" alt="Bag Preview">
+                        <button class="remove-btn" id="bagRemoveBtn">&#10005;</button>
+                    </div>
+                </div>
+                <button class="classify-btn bag-check-btn" id="checkBagBtn" disabled>Check Bag for Submission</button>
+                <div class="loading" id="bagLoading">
+                    <div class="spinner"></div>
+                    <p>Analyzing your bag...</p>
+                </div>
+            </section>
+
+            <section class="bag-results-section" id="bagResultsSection" style="display: none;">
+                <h2>Bag Quality Report</h2>
+                
+                <div class="score-card" id="scoreCard">
+                    <div class="score-circle" id="scoreCircle">
+                        <span class="score-value" id="scoreValue">85</span>
+                        <span class="score-label">Score</span>
+                    </div>
+                    <div class="grade-badge" id="gradeBadge">B</div>
+                    <div class="verdict" id="verdict">
+                        <span class="verdict-icon" id="verdictIcon">&#10004;</span>
+                        <span class="verdict-text" id="verdictText">Properly Sorted</span>
+                    </div>
+                </div>
+
+                <div class="analysis-card">
+                    <h3>Items Detected</h3>
+                    <div class="items-list" id="itemsDetected"></div>
+                </div>
+
+                <div class="issues-card" id="issuesCard" style="display: none;">
+                    <h3>Contamination Issues</h3>
+                    <ul class="issues-list" id="issuesList"></ul>
+                </div>
+
+                <div class="explanation-card">
+                    <h3>Analysis</h3>
+                    <p id="explanationText"></p>
+                </div>
+
+                <div class="suggestions-card" id="suggestionsCard">
+                    <h3>Suggestions for Improvement</h3>
+                    <ul class="suggestions-list" id="suggestionsList"></ul>
+                </div>
+
+                <div class="confidence-notice" id="confidenceNotice">
+                    <span class="notice-icon">&#9888;</span>
+                    <span id="confidenceText">Confidence: Medium</span>
+                </div>
+
+                <div class="limitations-notice">
+                    <strong>Limitations:</strong> This analysis uses AI image recognition and may not detect all items. Results are based on generic recycling guidelines.
+                </div>
+
+                <button class="new-scan-btn" id="newBagCheckBtn">Save Bag & Scan Next</button>
+            </section>
+            <section class="bag-queue-section" id="bagQueueSection" style="display: none;">
+                <h2>Submission Queue</h2>
+                <p class="section-subtitle">Review your scanned bags before final submission.</p>
+                <div class="bag-queue-list" id="bagQueueList"></div>
+                <button class="classify-btn submit-batch-btn" id="submitBatchBtn" disabled>Submit Bags (0)</button>
+            </section>
+
+            <section class="bin-guide">
+                <h2>Bin Guide</h2>
+                <div class="bins">
+                    <div class="bin recycling">
+                        <div class="bin-guide-icon">&#9851;</div>
+                        <h4>Recycling</h4>
+                        <p>Plastics, metals, glass, paper, cardboard</p>
+                    </div>
+                    <div class="bin compost">
+                        <div class="bin-guide-icon">&#127793;</div>
+                        <h4>Compost</h4>
+                        <p>Food scraps, yard waste, organic matter</p>
+                    </div>
+                    <div class="bin landfill">
+                        <div class="bin-guide-icon">&#128465;</div>
+                        <h4>Waste</h4>
+                        <p>Non-recyclable items, mixed materials</p>
+                    </div>
+                    <div class="bin e-waste">
+                        <div class="bin-guide-icon">&#128268;</div>
+                        <h4>E-Waste</h4>
+                        <p>Electronics, batteries, cables</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="mgmtDashboard" style="display: none;">
+            <section class="mgmt-header">
+                <h2>Management Dashboard</h2>
+                <p>PEI Waste Management - Household Overview</p>
+                <button class="logout-btn" id="mgmtLogout">Logout</button>
+            </section>
+
+            <section class="household-stats">
+                <div class="mgmt-stat">
+                    <div class="mgmt-stat-value" id="totalHouseholds">0</div>
+                    <div class="mgmt-stat-label">Households</div>
+                </div>
+                <div class="mgmt-stat">
+                    <div class="mgmt-stat-value" id="totalBagsSubmitted">0</div>
+                    <div class="mgmt-stat-label">Total Bags</div>
+                </div>
+                <div class="mgmt-stat">
+                    <div class="mgmt-stat-value" id="avgOverallScore">--</div>
+                    <div class="mgmt-stat-label">Avg Score</div>
+                </div>
+            </section>
+
+            <section class="households-section">
+                <h3>Household Overview</h3>
+                <div class="household-grid" id="householdGrid"></div>
+                <p class="no-data-msg" id="noHouseholdsMsg">No households registered yet.</p>
+            </section>
+
+            <div class="feedback-modal" id="feedbackModal" style="display: none;">
+                <div class="modal-content">
+                    <h3>Send Feedback to House #<span id="feedbackHouseNum"></span></h3>
+                    <form id="feedbackForm">
+                        <div class="form-group">
+                            <label>Bag Color</label>
+                            <div class="bag-options feedback-bag-options">
+                                <button type="button" class="bag-option active" data-bag="green">
+                                    <span class="bag-color-dot green"></span>
+                                    Green
+                                </button>
+                                <button type="button" class="bag-option" data-bag="blue">
+                                    <span class="bag-color-dot blue"></span>
+                                    Blue
+                                </button>
+                                <button type="button" class="bag-option" data-bag="white">
+                                    <span class="bag-color-dot white"></span>
+                                    White
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Common Reasons</label>
+                            <p class="field-hint">Select all that apply.</p>
+                            <div class="reason-list" id="feedbackReasonList"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="feedbackText">Feedback Message</label>
+                            <textarea id="feedbackText" rows="3" placeholder="Enter feedback for this household..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="pointsOverride">Adjusted Points</label>
+                            <input type="number" id="pointsOverride" min="0" step="1" placeholder="Enter new adjusted value">
+                            <p class="field-hint">Enter new adjusted value.</p>
+                        </div>
+                        <div class="modal-actions">
+                            <button type="button" class="cancel-btn" id="cancelFeedback">Cancel</button>
+                            <button type="submit" class="submit-btn">Send Feedback</button>
+                        </div>
+                    </form>
+                </div>
             </div>
 
-            <div class="bag-type-selector">
-                <label>Select your bag color:</label>
-                <div class="bag-options">
-                    <button class="bag-option active" data-bag="green">
-                        <span class="bag-color-dot green"></span>
-                        Green (Compost)
+            <div class="feedback-confirmation-modal" id="feedbackConfirmationModal" style="display: none;">
+                <div class="feedback-confirmation-content">
+                    <h3>Feedback Submitted</h3>
+                    <p>Your feedback was sent to House #<span id="feedbackConfirmationHouse"></span>.</p>
+                    <button class="submit-btn" id="feedbackConfirmationClose">Done</button>
+                </div>
+            </div>
+
+            <div class="bag-detail-modal" id="bagDetailModal" style="display: none;">
+                <div class="bag-detail-content">
+                    <button class="modal-close" id="bagDetailClose" aria-label="Close bag details">&times;</button>
+                    <div class="bag-detail-header">
+                        <div>
+                            <h3>Bag Quality Report</h3>
+                            <p class="bag-detail-meta">House #<span id="bagDetailHouse"></span> &bull; <span id="bagDetailDate"></span></p>
+                        </div>
+                        <span class="bag-type-pill" id="bagDetailType"></span>
+                    </div>
+                    <div class="bag-detail-grid">
+                        <div class="bag-detail-photo">
+                            <img id="bagDetailImage" alt="Bag photo">
+                            <div class="bag-detail-placeholder" id="bagDetailPlaceholder">No photo available</div>
+                        </div>
+                        <div class="bag-detail-report">
+                            <div class="score-card" id="mgmtScoreCard">
+                                <div class="score-circle">
+                                    <span class="score-value" id="mgmtScoreValue">--</span>
+                                    <span class="score-label">Score</span>
+                                </div>
+                                <div class="grade-badge" id="mgmtGradeBadge">--</div>
+                                <div class="verdict" id="mgmtVerdict">
+                                    <span class="verdict-icon" id="mgmtVerdictIcon">&#10004;</span>
+                                    <span class="verdict-text" id="mgmtVerdictText">Properly Sorted</span>
+                                </div>
+                            </div>
+
+                            <div class="analysis-card">
+                                <h3>Items Detected</h3>
+                                <div class="items-list" id="mgmtItemsDetected"></div>
+                            </div>
+
+                            <div class="issues-card" id="mgmtIssuesCard" style="display: none;">
+                                <h3>Contamination Issues</h3>
+                                <ul class="issues-list" id="mgmtIssuesList"></ul>
+                            </div>
+
+                            <div class="explanation-card">
+                                <h3>Analysis</h3>
+                                <p id="mgmtExplanation"></p>
+                            </div>
+
+                            <div class="suggestions-card">
+                                <h3>Suggestions for Improvement</h3>
+                                <ul class="suggestions-list" id="mgmtSuggestionsList"></ul>
+                            </div>
+
+                            <div class="confidence-notice" id="mgmtConfidenceNotice">
+                                <span class="notice-icon">&#9888;</span>
+                                <span id="mgmtConfidenceText"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="mgmt-legend">
+                <h4>Status Legend</h4>
+                <div class="legend-items">
+                    <div class="legend-item">
+                        <span class="status-badge status-ok">OK</span>
+                        <span>Ready for pickup (Score 75+)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="status-badge status-review">Review</span>
+                        <span>May need attention (Score 60-74)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="status-badge status-attention">Attention</span>
+                        <span>Needs improvement (Score below 60)</span>
+                    </div>
+                </div>
+                <p class="disclaimer">Note: This system assists decision-making only and does not enforce rules.</p>
+            </section>
+        </div>
+
+        <div class="redeem-modal" id="redeemModal" style="display: none;">
+            <div class="redeem-content">
+                <button class="modal-close" id="redeemClose" aria-label="Close rewards">&times;</button>
+                <div class="redeem-header">
+                    <h3>Redeem Eco-Points</h3>
+                    <p>Choose a reward that supports sustainability in your community.</p>
+                </div>
+                <div class="redeem-balance">Available points: <span id="redeemPoints">0</span></div>
+                <div class="redeem-options">
+                    <button class="redeem-option" data-reward-id="community_garden" data-cost="400">
+                        <div class="redeem-title">Community Garden Donation</div>
+                        <p>Help expand local community garden beds.</p>
+                        <span class="redeem-cost">400 pts</span>
                     </button>
-                    <button class="bag-option" data-bag="blue">
-                        <span class="bag-color-dot blue"></span>
-                        Blue (Recycling)
+                    <button class="redeem-option" data-reward-id="tree" data-cost="500">
+                        <div class="redeem-title">Plant a Tree</div>
+                        <p>Fund local tree planting and habitat restoration.</p>
+                        <span class="redeem-cost">500 pts</span>
                     </button>
-                    <button class="bag-option" data-bag="white">
-                        <span class="bag-color-dot white"></span>
-                        White (Landfill)
+                    <button class="redeem-option" data-reward-id="bike_tune" data-cost="650">
+                        <div class="redeem-title">Bike Tune-Up Credit</div>
+                        <p>Support sustainable commuting with a local bike shop.</p>
+                        <span class="redeem-cost">650 pts</span>
+                    </button>
+                    <button class="redeem-option" data-reward-id="farmers_market" data-cost="750">
+                        <div class="redeem-title">Farmers Market Gift Card</div>
+                        <p>Support local growers with a sustainable food gift card.</p>
+                        <span class="redeem-cost">750 pts</span>
+                    </button>
+                    <button class="redeem-option" data-reward-id="refill_shop" data-cost="900">
+                        <div class="redeem-title">Refill Shop Gift Card</div>
+                        <p>Stock up on low-waste refills and bulk essentials.</p>
+                        <span class="redeem-cost">900 pts</span>
+                    </button>
+                    <button class="redeem-option" data-reward-id="cavendish" data-cost="1000">
+                        <div class="redeem-title">Cavendish Farms Voucher</div>
+                        <p>Redeem Canadian-made products from Cavendish Farms.</p>
+                        <span class="redeem-cost">1000 pts</span>
                     </button>
                 </div>
+                <p class="redeem-footnote">Redemptions are processed within 3-5 business days.</p>
             </div>
+        </div>
 
-            <div class="upload-area" id="bagDropZone">
-                <div class="upload-content" id="bagUploadContent">
-                    <div class="upload-icon">&#128188;</div>
-                    <p>Drag & drop a bag photo here</p>
-                    <p class="or-text">or</p>
-                    <label for="bagFileInput" class="file-label">Choose File</label>
-                    <input type="file" id="bagFileInput" accept="image/*" hidden>
+        <div class="celebration-modal" id="celebrationModal" style="display: none;">
+            <div class="celebration-content">
+                <div class="confetti" id="confetti"></div>
+                <h3>Submission Complete!</h3>
+                <p class="celebration-subtitle">Nice work keeping things sorted.</p>
+                <div class="celebration-total">
+                    +<span id="celebrationTotal">0</span> points
                 </div>
-                <div class="preview-container" id="bagPreviewContainer" style="display: none;">
-                    <img id="bagImagePreview" alt="Bag Preview">
-                    <button class="remove-btn" id="bagRemoveBtn">&#10005;</button>
-                </div>
+                <div class="celebration-list" id="celebrationList"></div>
+                <button class="submit-btn celebration-dismiss" id="celebrationDismiss">Dismiss</button>
             </div>
-            <button class="classify-btn bag-check-btn" id="checkBagBtn" disabled>Check Bag Quality</button>
-            <div class="loading" id="bagLoading">
-                <div class="spinner"></div>
-                <p>Analyzing your bag...</p>
-            </div>
-        </section>
-
-        <section class="bag-results-section" id="bagResultsSection" style="display: none;">
-            <h2>Bag Quality Report</h2>
-            
-            <div class="score-card" id="scoreCard">
-                <div class="score-circle" id="scoreCircle">
-                    <span class="score-value" id="scoreValue">85</span>
-                    <span class="score-label">Score</span>
-                </div>
-                <div class="grade-badge" id="gradeBadge">B</div>
-                <div class="verdict" id="verdict">
-                    <span class="verdict-icon" id="verdictIcon">&#10004;</span>
-                    <span class="verdict-text" id="verdictText">Properly Sorted</span>
-                </div>
-            </div>
-
-            <div class="analysis-card">
-                <h3>Items Detected</h3>
-                <div class="items-list" id="itemsDetected">
-                    <span class="item-tag">Banana peel</span>
-                    <span class="item-tag">Coffee grounds</span>
-                </div>
-            </div>
-
-            <div class="issues-card" id="issuesCard" style="display: none;">
-                <h3>Contamination Issues</h3>
-                <ul class="issues-list" id="issuesList"></ul>
-            </div>
-
-            <div class="explanation-card">
-                <h3>Analysis</h3>
-                <p id="explanationText">Your compost bag looks well-sorted with proper organic waste.</p>
-            </div>
-
-            <div class="suggestions-card" id="suggestionsCard">
-                <h3>Suggestions for Improvement</h3>
-                <ul class="suggestions-list" id="suggestionsList"></ul>
-            </div>
-
-            <div class="confidence-notice" id="confidenceNotice">
-                <span class="notice-icon">&#9888;</span>
-                <span id="confidenceText">Confidence: Medium - Some items may not be clearly visible</span>
-            </div>
-
-            <div class="limitations-notice">
-                <strong>Limitations:</strong> This analysis uses AI image recognition and may not detect all items. Results are based on generic recycling guidelines and may vary by location. Always check local recycling rules.
-            </div>
-
-            <button class="new-scan-btn" id="newBagCheckBtn">Check Another Bag</button>
-        </section>
-
-        <section class="total-impact-section">
-            <h2>Your Total Impact</h2>
-            <div class="total-stats">
-                <div class="total-stat">
-                    <div class="total-value" id="totalWaste">0</div>
-                    <div class="total-label">Items Sorted</div>
-                </div>
-                <div class="total-stat">
-                    <div class="total-value" id="totalWasteDiverted">0g</div>
-                    <div class="total-label">Total Waste Diverted</div>
-                </div>
-                <div class="total-stat">
-                    <div class="total-value" id="totalCo2">0g</div>
-                    <div class="total-label">Total CO2 Saved</div>
-                </div>
-                <div class="total-stat">
-                    <div class="total-value" id="totalMoney">$0.00</div>
-                    <div class="total-label">Total Savings</div>
-                </div>
-            </div>
-            <button class="reset-btn" id="resetBtn">Reset Stats</button>
-        </section>
-
-        <section class="bin-guide">
-            <h2>Bin Guide</h2>
-            <div class="bins">
-                <div class="bin recycling">
-                    <div class="bin-guide-icon">&#9851;</div>
-                    <h4>Recycling</h4>
-                    <p>Plastics, metals, glass, paper, cardboard</p>
-                </div>
-                <div class="bin compost">
-                    <div class="bin-guide-icon">&#127793;</div>
-                    <h4>Compost</h4>
-                    <p>Food scraps, yard waste, organic matter</p>
-                </div>
-                <div class="bin landfill">
-                    <div class="bin-guide-icon">&#128465;</div>
-                    <h4>Landfill</h4>
-                    <p>Non-recyclable items, mixed materials</p>
-                </div>
-                <div class="bin e-waste">
-                    <div class="bin-guide-icon">&#128268;</div>
-                    <h4>E-Waste</h4>
-                    <p>Electronics, batteries, cables</p>
-                </div>
-            </div>
-        </section>
+        </div>
 
         <footer>
             <p>Made with &#127793; for a greener planet</p>
         </footer>
     </div>
 
-    <script src="./app.js"></script>
+    <script src="/static/app.js"></script>
 </body>
 </html>

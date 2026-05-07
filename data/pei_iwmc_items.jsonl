@@ -1,0 +1,287 @@
+{"name":"plastic bottle (water)","aliases":["water bottle","PET water bottle"],"label":"BLUE_BAG","notes":"Clean, empty rigid plastic bottle.","source":"IWMC","tags":["plastic","rigid","bottle"]}
+{"name":"plastic bottle (soda)","aliases":["soft drink bottle","PET soda bottle"],"label":"BLUE_BAG","notes":"Clean, empty rigid plastic bottle.","source":"IWMC","tags":["plastic","rigid","bottle"]}
+{"name":"plastic bottle (juice)","aliases":["juice bottle"],"label":"BLUE_BAG","notes":"Clean, empty rigid plastic bottle.","source":"IWMC","tags":["plastic","rigid","bottle"]}
+{"name":"plastic bottle (sports drink)","aliases":["sports drink bottle"],"label":"BLUE_BAG","notes":"Clean, empty rigid plastic bottle.","source":"IWMC","tags":["plastic","rigid","bottle"]}
+{"name":"plastic bottle (cooking oil)","aliases":["oil bottle"],"label":"BLUE_BAG","notes":"Empty, rinse if needed.","source":"IWMC","tags":["plastic","rigid","bottle"]}
+{"name":"plastic bottle (vinegar)","aliases":["vinegar bottle"],"label":"BLUE_BAG","notes":"Empty, rinse if needed.","source":"IWMC","tags":["plastic","rigid","bottle"]}
+{"name":"plastic bottle (ketchup)","aliases":["ketchup bottle"],"label":"BLUE_BAG","notes":"Empty, squeeze out residue.","source":"IWMC","tags":["plastic","rigid","bottle"]}
+{"name":"plastic bottle (mustard)","aliases":["mustard bottle"],"label":"BLUE_BAG","notes":"Empty, squeeze out residue.","source":"IWMC","tags":["plastic","rigid","bottle"]}
+{"name":"plastic bottle (shampoo)","aliases":["shampoo bottle"],"label":"BLUE_BAG","notes":"Empty, rinse if needed.","source":"IWMC","tags":["plastic","rigid","bottle"]}
+{"name":"plastic bottle (conditioner)","aliases":["conditioner bottle"],"label":"BLUE_BAG","notes":"Empty, rinse if needed.","source":"IWMC","tags":["plastic","rigid","bottle"]}
+{"name":"plastic bottle (body wash)","aliases":["body wash bottle"],"label":"BLUE_BAG","notes":"Empty, rinse if needed.","source":"IWMC","tags":["plastic","rigid","bottle"]}
+{"name":"plastic bottle (hand soap)","aliases":["soap bottle"],"label":"BLUE_BAG","notes":"Empty, rinse if needed.","source":"IWMC","tags":["plastic","rigid","bottle"]}
+{"name":"plastic bottle (dish soap)","aliases":["dish soap bottle"],"label":"BLUE_BAG","notes":"Empty, rinse if needed.","source":"IWMC","tags":["plastic","rigid","bottle"]}
+{"name":"plastic bottle (laundry detergent)","aliases":["detergent bottle"],"label":"BLUE_BAG","notes":"Empty, rinse if needed.","source":"IWMC","tags":["plastic","rigid","bottle"]}
+{"name":"plastic bottle (fabric softener)","aliases":["softener bottle"],"label":"BLUE_BAG","notes":"Empty, rinse if needed.","source":"IWMC","tags":["plastic","rigid","bottle"]}
+{"name":"plastic bottle (window cleaner)","aliases":["spray cleaner bottle"],"label":"BLUE_BAG","notes":"Empty, remove trigger if possible.","source":"IWMC","tags":["plastic","rigid","bottle"]}
+{"name":"plastic bottle (bleach)","aliases":["bleach bottle"],"label":"BLUE_BAG","notes":"Empty, rinse if needed.","source":"IWMC","tags":["plastic","rigid","bottle"]}
+{"name":"plastic bottle (mouthwash)","aliases":["mouthwash bottle"],"label":"BLUE_BAG","notes":"Empty, rinse if needed.","source":"IWMC","tags":["plastic","rigid","bottle"]}
+{"name":"plastic bottle (lotion)","aliases":["lotion bottle"],"label":"BLUE_BAG","notes":"Empty, remove pump if possible.","source":"IWMC","tags":["plastic","rigid","bottle"]}
+{"name":"plastic bottle (sunscreen)","aliases":["sunscreen bottle"],"label":"BLUE_BAG","notes":"Empty, remove pump if possible.","source":"IWMC","tags":["plastic","rigid","bottle"]}
+{"name":"milk jug (plastic)","aliases":["plastic milk jug"],"label":"BLUE_BAG","notes":"Empty, rinse if needed.","source":"IWMC","tags":["plastic","rigid","jug"]}
+{"name":"juice jug (plastic)","aliases":["plastic juice jug"],"label":"BLUE_BAG","notes":"Empty, rinse if needed.","source":"IWMC","tags":["plastic","rigid","jug"]}
+{"name":"water jug (plastic)","aliases":["plastic water jug"],"label":"BLUE_BAG","notes":"Empty, rinse if needed.","source":"IWMC","tags":["plastic","rigid","jug"]}
+{"name":"laundry jug (plastic)","aliases":["detergent jug"],"label":"BLUE_BAG","notes":"Empty, rinse if needed.","source":"IWMC","tags":["plastic","rigid","jug"]}
+{"name":"vinegar jug (plastic)","aliases":["plastic vinegar jug"],"label":"BLUE_BAG","notes":"Empty, rinse if needed.","source":"IWMC","tags":["plastic","rigid","jug"]}
+{"name":"yogurt tub (plastic)","aliases":["yogurt container"],"label":"BLUE_BAG","notes":"Empty, rinse if needed.","source":"IWMC","tags":["plastic","rigid","tub"]}
+{"name":"margarine tub (plastic)","aliases":["margarine container"],"label":"BLUE_BAG","notes":"Empty, rinse if needed.","source":"IWMC","tags":["plastic","rigid","tub"]}
+{"name":"sour cream tub (plastic)","aliases":["sour cream container"],"label":"BLUE_BAG","notes":"Empty, rinse if needed.","source":"IWMC","tags":["plastic","rigid","tub"]}
+{"name":"cottage cheese container (plastic)","aliases":["cottage cheese tub"],"label":"BLUE_BAG","notes":"Empty, rinse if needed.","source":"IWMC","tags":["plastic","rigid","tub"]}
+{"name":"hummus container (plastic)","aliases":["hummus tub"],"label":"BLUE_BAG","notes":"Empty, rinse if needed.","source":"IWMC","tags":["plastic","rigid","tub"]}
+{"name":"deli salad container (plastic)","aliases":["deli container"],"label":"BLUE_BAG","notes":"Rigid plastic, clean.","source":"IWMC","tags":["plastic","rigid","container"]}
+{"name":"rigid plastic clamshell (berries)","aliases":["berry clamshell"],"label":"BLUE_BAG","notes":"Rigid clear plastic, clean.","source":"IWMC","tags":["plastic","rigid","clamshell"]}
+{"name":"rigid plastic clamshell (bakery)","aliases":["bakery clamshell"],"label":"BLUE_BAG","notes":"Rigid clear plastic, clean.","source":"IWMC","tags":["plastic","rigid","clamshell"]}
+{"name":"plastic produce container (rigid)","aliases":["produce box"],"label":"BLUE_BAG","notes":"Rigid plastic, clean.","source":"IWMC","tags":["plastic","rigid","container"]}
+{"name":"plastic takeout container (rigid, clean)","aliases":["rigid takeout container"],"label":"BLUE_BAG","notes":"Rigid plastic, clean and empty.","source":"IWMC","tags":["plastic","rigid","container"]}
+{"name":"plastic cup (rigid, clean)","aliases":["rigid plastic cup"],"label":"BLUE_BAG","notes":"Rigid plastic cup, clean.","source":"IWMC","tags":["plastic","rigid","cup"]}
+{"name":"plastic bowl (rigid, clean)","aliases":["rigid plastic bowl"],"label":"BLUE_BAG","notes":"Rigid plastic bowl, clean.","source":"IWMC","tags":["plastic","rigid","bowl"]}
+{"name":"plastic lid #1 (PET)","aliases":["PET lid"],"label":"BLUE_BAG","notes":"Plastic lid marked #1.","source":"IWMC","tags":["plastic","lid","resin-1"]}
+{"name":"plastic lid #2 (HDPE)","aliases":["HDPE lid"],"label":"BLUE_BAG","notes":"Plastic lid marked #2.","source":"IWMC","tags":["plastic","lid","resin-2"]}
+{"name":"plastic lid #3 (PVC)","aliases":["PVC lid"],"label":"BLUE_BAG","notes":"Plastic lid marked #3.","source":"IWMC","tags":["plastic","lid","resin-3"]}
+{"name":"plastic lid #4 (LDPE)","aliases":["LDPE lid"],"label":"BLUE_BAG","notes":"Plastic lid marked #4.","source":"IWMC","tags":["plastic","lid","resin-4"]}
+{"name":"plastic lid #5 (PP)","aliases":["PP lid"],"label":"BLUE_BAG","notes":"Plastic lid marked #5.","source":"IWMC","tags":["plastic","lid","resin-5"]}
+{"name":"aluminum can","aliases":["soda can","pop can"],"label":"BLUE_BAG","notes":"Empty aluminum can.","source":"IWMC","tags":["metal","can","aluminum"]}
+{"name":"steel can","aliases":["food can","tin-plated can"],"label":"BLUE_BAG","notes":"Empty steel can.","source":"IWMC","tags":["metal","can","steel"]}
+{"name":"tin can","aliases":["tin food can"],"label":"BLUE_BAG","notes":"Empty tin can.","source":"IWMC","tags":["metal","can"]}
+{"name":"soup can","aliases":["canned soup"],"label":"BLUE_BAG","notes":"Empty metal soup can.","source":"IWMC","tags":["metal","can"]}
+{"name":"tuna can","aliases":["canned tuna"],"label":"BLUE_BAG","notes":"Empty metal can, rinse.","source":"IWMC","tags":["metal","can"]}
+{"name":"cat food can","aliases":["pet food can"],"label":"BLUE_BAG","notes":"Empty metal can, rinse.","source":"IWMC","tags":["metal","can"]}
+{"name":"metal jar lid","aliases":["metal lid"],"label":"BLUE_BAG","notes":"Metal lid from jar.","source":"IWMC","tags":["metal","lid"]}
+{"name":"metal bottle cap","aliases":["bottle cap"],"label":"BLUE_BAG","notes":"Metal cap from bottle.","source":"IWMC","tags":["metal","cap"]}
+{"name":"clean aluminum foil","aliases":["aluminum foil"],"label":"BLUE_BAG","notes":"Clean foil only.","source":"IWMC","tags":["metal","foil"]}
+{"name":"aluminum tray (clean)","aliases":["foil tray"],"label":"BLUE_BAG","notes":"Clean foil tray.","source":"IWMC","tags":["metal","tray"]}
+{"name":"aluminum pie plate (clean)","aliases":["foil pie plate"],"label":"BLUE_BAG","notes":"Clean foil plate.","source":"IWMC","tags":["metal","tray"]}
+{"name":"glass bottle (beer)","aliases":["beer bottle"],"label":"BLUE_BAG","notes":"Empty glass bottle.","source":"IWMC","tags":["glass","bottle"]}
+{"name":"glass bottle (wine)","aliases":["wine bottle"],"label":"BLUE_BAG","notes":"Empty glass bottle.","source":"IWMC","tags":["glass","bottle"]}
+{"name":"glass bottle (juice)","aliases":["juice bottle glass"],"label":"BLUE_BAG","notes":"Empty glass bottle.","source":"IWMC","tags":["glass","bottle"]}
+{"name":"glass jar (pasta sauce)","aliases":["pasta sauce jar"],"label":"BLUE_BAG","notes":"Empty glass jar.","source":"IWMC","tags":["glass","jar"]}
+{"name":"glass jar (jam)","aliases":["jam jar"],"label":"BLUE_BAG","notes":"Empty glass jar.","source":"IWMC","tags":["glass","jar"]}
+{"name":"glass jar (pickle)","aliases":["pickle jar"],"label":"BLUE_BAG","notes":"Empty glass jar.","source":"IWMC","tags":["glass","jar"]}
+{"name":"clear glass jar (baby food)","aliases":["baby food jar"],"label":"BLUE_BAG","notes":"Empty glass jar.","source":"IWMC","tags":["glass","jar"]}
+{"name":"newspaper","aliases":["newsprint"],"label":"BLUE_BAG","notes":"Clean, dry paper.","source":"IWMC","tags":["paper"]}
+{"name":"magazine","aliases":["magazines"],"label":"BLUE_BAG","notes":"Clean, dry paper.","source":"IWMC","tags":["paper"]}
+{"name":"office paper","aliases":["printer paper"],"label":"BLUE_BAG","notes":"Clean, dry paper.","source":"IWMC","tags":["paper"]}
+{"name":"printer paper","aliases":["copy paper"],"label":"BLUE_BAG","notes":"Clean, dry paper.","source":"IWMC","tags":["paper"]}
+{"name":"envelope (no plastic window)","aliases":["plain envelope"],"label":"BLUE_BAG","notes":"Paper envelope without plastic window.","source":"IWMC","tags":["paper","envelope"]}
+{"name":"junk mail","aliases":["direct mail"],"label":"BLUE_BAG","notes":"Clean, dry paper.","source":"IWMC","tags":["paper"]}
+{"name":"flyer","aliases":["advertising flyer"],"label":"BLUE_BAG","notes":"Clean, dry paper.","source":"IWMC","tags":["paper"]}
+{"name":"phone book","aliases":["telephone directory"],"label":"BLUE_BAG","notes":"Paper book.","source":"IWMC","tags":["paper"]}
+{"name":"paperboard cereal box","aliases":["cereal box"],"label":"BLUE_BAG","notes":"Empty, clean paperboard.","source":"IWMC","tags":["paperboard"]}
+{"name":"cracker box","aliases":["paperboard box"],"label":"BLUE_BAG","notes":"Empty, clean paperboard.","source":"IWMC","tags":["paperboard"]}
+{"name":"tissue box","aliases":["paperboard tissue box"],"label":"BLUE_BAG","notes":"Empty, clean paperboard.","source":"IWMC","tags":["paperboard"]}
+{"name":"shoe box","aliases":["paperboard shoe box"],"label":"BLUE_BAG","notes":"Empty, clean paperboard.","source":"IWMC","tags":["paperboard"]}
+{"name":"pasta box","aliases":["paperboard pasta box"],"label":"BLUE_BAG","notes":"Empty, clean paperboard.","source":"IWMC","tags":["paperboard"]}
+{"name":"paper towel tube (clean)","aliases":["paper towel roll"],"label":"BLUE_BAG","notes":"Empty cardboard tube, clean.","source":"IWMC","tags":["paperboard","tube"]}
+{"name":"toilet paper roll","aliases":["TP roll"],"label":"BLUE_BAG","notes":"Empty cardboard tube, clean.","source":"IWMC","tags":["paperboard","tube"]}
+{"name":"cardboard sleeve (paperboard)","aliases":["paperboard sleeve"],"label":"BLUE_BAG","notes":"Clean paperboard sleeve.","source":"IWMC","tags":["paperboard"]}
+{"name":"milk carton","aliases":["gable-top carton"],"label":"BLUE_BAG","notes":"Carton, empty and rinsed.","source":"IWMC","tags":["carton"]}
+{"name":"juice carton","aliases":["gable-top juice carton"],"label":"BLUE_BAG","notes":"Carton, empty and rinsed.","source":"IWMC","tags":["carton"]}
+{"name":"soup carton (aseptic)","aliases":["aseptic soup carton"],"label":"BLUE_BAG","notes":"Carton, empty and rinsed.","source":"IWMC","tags":["carton"]}
+{"name":"paper bag (clean)","aliases":["brown paper bag"],"label":"BLUE_BAG","notes":"Clean, dry paper bag.","source":"IWMC","tags":["paper"]}
+{"name":"book (paperback)","aliases":["paperback book"],"label":"BLUE_BAG","notes":"Paper-only book.","source":"IWMC","tags":["paper"]}
+{"name":"notebook paper","aliases":["lined paper"],"label":"BLUE_BAG","notes":"Clean, dry paper.","source":"IWMC","tags":["paper"]}
+{"name":"brochure","aliases":["pamphlet"],"label":"BLUE_BAG","notes":"Clean, dry paper.","source":"IWMC","tags":["paper"]}
+{"name":"greeting card (no glitter)","aliases":["paper greeting card"],"label":"BLUE_BAG","notes":"Plain paper card without glitter or foil.","source":"IWMC","tags":["paper"]}
+{"name":"wrapping paper (non-foil)","aliases":["plain gift wrap"],"label":"BLUE_BAG","notes":"Plain paper wrap without foil or glitter.","source":"IWMC","tags":["paper"]}
+{"name":"plastic jar (peanut butter)","aliases":["peanut butter jar"],"label":"BLUE_BAG","notes":"Rigid plastic jar, clean.","source":"IWMC","tags":["plastic","rigid","jar"]}
+{"name":"plastic container (salad dressing)","aliases":["dressing bottle"],"label":"BLUE_BAG","notes":"Rigid plastic bottle, clean.","source":"IWMC","tags":["plastic","rigid","bottle"]}
+{"name":"food scraps","aliases":["kitchen scraps"],"label":"COMPOST","notes":"Food scraps go in compost.","source":"IWMC","tags":["food","organic"]}
+{"name":"fruit peels","aliases":["fruit skins"],"label":"COMPOST","notes":"Fruit peels are compostable.","source":"IWMC","tags":["food","organic"]}
+{"name":"banana peel","aliases":["banana skin"],"label":"COMPOST","notes":"Compostable food scrap.","source":"IWMC","tags":["food","organic"]}
+{"name":"apple core","aliases":["apple scraps"],"label":"COMPOST","notes":"Compostable food scrap.","source":"IWMC","tags":["food","organic"]}
+{"name":"orange peel","aliases":["citrus peel"],"label":"COMPOST","notes":"Compostable food scrap.","source":"IWMC","tags":["food","organic"]}
+{"name":"vegetable peels","aliases":["vegetable scraps"],"label":"COMPOST","notes":"Compostable food scrap.","source":"IWMC","tags":["food","organic"]}
+{"name":"salad greens","aliases":["lettuce"],"label":"COMPOST","notes":"Compostable food scrap.","source":"IWMC","tags":["food","organic"]}
+{"name":"bread crusts","aliases":["bread scraps"],"label":"COMPOST","notes":"Compostable food scrap.","source":"IWMC","tags":["food","organic"]}
+{"name":"pasta","aliases":["cooked pasta"],"label":"COMPOST","notes":"Compostable food scrap.","source":"IWMC","tags":["food","organic"]}
+{"name":"rice","aliases":["cooked rice"],"label":"COMPOST","notes":"Compostable food scrap.","source":"IWMC","tags":["food","organic"]}
+{"name":"cereal (old)","aliases":["stale cereal"],"label":"COMPOST","notes":"Compostable food scrap.","source":"IWMC","tags":["food","organic"]}
+{"name":"eggshells","aliases":["egg shells"],"label":"COMPOST","notes":"Compostable food scrap.","source":"IWMC","tags":["food","organic"]}
+{"name":"coffee grounds","aliases":["coffee grinds"],"label":"COMPOST","notes":"Compostable food scrap.","source":"IWMC","tags":["food","organic"]}
+{"name":"tea bags","aliases":["used tea bag"],"label":"COMPOST","notes":"Compostable food scrap.","source":"IWMC","tags":["food","organic"]}
+{"name":"coffee filters","aliases":["paper coffee filter"],"label":"COMPOST","notes":"Compostable paper.","source":"IWMC","tags":["paper","organic"]}
+{"name":"paper towel","aliases":["paper towels"],"label":"COMPOST","notes":"PEI accepts paper towels in compost.","source":"IWMC","tags":["paper","organic"]}
+{"name":"napkin","aliases":["paper napkin"],"label":"COMPOST","notes":"PEI accepts napkins in compost.","source":"IWMC","tags":["paper","organic"]}
+{"name":"tissue","aliases":["paper tissue"],"label":"COMPOST","notes":"PEI accepts tissues in compost.","source":"IWMC","tags":["paper","organic"]}
+{"name":"paper coffee cup","aliases":["coffee cup (paper)"],"label":"COMPOST","notes":"PEI: paper coffee cups go to compost.","source":"IWMC","tags":["paper","cup"]}
+{"name":"paper lid","aliases":["fiber lid"],"label":"COMPOST","notes":"Paper/fiber lids compost.","source":"IWMC","tags":["paper","lid"]}
+{"name":"paper straw","aliases":["paper drinking straw"],"label":"COMPOST","notes":"Paper straw compost.","source":"IWMC","tags":["paper"]}
+{"name":"wooden stir stick","aliases":["coffee stir stick"],"label":"COMPOST","notes":"Wooden items compost.","source":"IWMC","tags":["wood"]}
+{"name":"wooden cutlery","aliases":["wood fork","wood knife"],"label":"COMPOST","notes":"Wooden cutlery compost.","source":"IWMC","tags":["wood"]}
+{"name":"toothpicks","aliases":["wood toothpick"],"label":"COMPOST","notes":"Wood items compost.","source":"IWMC","tags":["wood"]}
+{"name":"popsicle stick","aliases":["ice cream stick"],"label":"COMPOST","notes":"Wood items compost.","source":"IWMC","tags":["wood"]}
+{"name":"pizza box (soiled)","aliases":["greasy pizza box"],"label":"COMPOST","notes":"Soiled pizza box compost.","source":"IWMC","tags":["paper","food-soiled"]}
+{"name":"greasy paper","aliases":["food-soiled paper"],"label":"COMPOST","notes":"Food-soiled paper compost.","source":"IWMC","tags":["paper","food-soiled"]}
+{"name":"paper plate (soiled)","aliases":["dirty paper plate"],"label":"COMPOST","notes":"Food-soiled paper plate compost.","source":"IWMC","tags":["paper","food-soiled"]}
+{"name":"paper bowl (soiled)","aliases":["dirty paper bowl"],"label":"COMPOST","notes":"Food-soiled paper bowl compost.","source":"IWMC","tags":["paper","food-soiled"]}
+{"name":"compostable plate (certified)","aliases":["certified compostable plate"],"label":"COMPOST","notes":"Certified compostable fiber products.","source":"IWMC","tags":["compostable","fiber"]}
+{"name":"compostable bowl (certified)","aliases":["certified compostable bowl"],"label":"COMPOST","notes":"Certified compostable fiber products.","source":"IWMC","tags":["compostable","fiber"]}
+{"name":"compostable cutlery (certified fiber)","aliases":["fiber cutlery"],"label":"COMPOST","notes":"Certified compostable fiber cutlery.","source":"IWMC","tags":["compostable","fiber"]}
+{"name":"compostable takeout container (fiber)","aliases":["bagasse container"],"label":"COMPOST","notes":"Certified compostable fiber container.","source":"IWMC","tags":["compostable","fiber"]}
+{"name":"compostable clamshell (bagasse)","aliases":["bagasse clamshell"],"label":"COMPOST","notes":"Certified compostable fiber clamshell.","source":"IWMC","tags":["compostable","fiber"]}
+{"name":"eggs","aliases":["egg scraps"],"label":"COMPOST","notes":"Food scraps compost.","source":"IWMC","tags":["food","organic"]}
+{"name":"meat scraps","aliases":["meat leftovers"],"label":"COMPOST","notes":"Food scraps compost.","source":"IWMC","tags":["food","organic"]}
+{"name":"fish bones","aliases":["fish scraps"],"label":"COMPOST","notes":"Food scraps compost.","source":"IWMC","tags":["food","organic"]}
+{"name":"chicken bones","aliases":["poultry bones"],"label":"COMPOST","notes":"Food scraps compost.","source":"IWMC","tags":["food","organic"]}
+{"name":"dairy leftovers","aliases":["milk leftovers"],"label":"COMPOST","notes":"Food scraps compost.","source":"IWMC","tags":["food","organic"]}
+{"name":"cheese scraps","aliases":["cheese leftovers"],"label":"COMPOST","notes":"Food scraps compost.","source":"IWMC","tags":["food","organic"]}
+{"name":"yogurt leftovers","aliases":["yogurt scraps"],"label":"COMPOST","notes":"Food scraps compost.","source":"IWMC","tags":["food","organic"]}
+{"name":"sauce leftovers","aliases":["sauce scraps"],"label":"COMPOST","notes":"Food scraps compost.","source":"IWMC","tags":["food","organic"]}
+{"name":"soup leftovers","aliases":["soup scraps"],"label":"COMPOST","notes":"Food scraps compost.","source":"IWMC","tags":["food","organic"]}
+{"name":"nutshells","aliases":["nut shells"],"label":"COMPOST","notes":"Compostable food scraps.","source":"IWMC","tags":["food","organic"]}
+{"name":"corn cob","aliases":["corn cobs"],"label":"COMPOST","notes":"Compostable food scraps.","source":"IWMC","tags":["food","organic"]}
+{"name":"leaves","aliases":["yard leaves"],"label":"COMPOST","notes":"Yard waste compost.","source":"IWMC","tags":["yard","organic"]}
+{"name":"grass clippings","aliases":["lawn clippings"],"label":"COMPOST","notes":"Yard waste compost.","source":"IWMC","tags":["yard","organic"]}
+{"name":"garden trimmings","aliases":["garden waste"],"label":"COMPOST","notes":"Yard waste compost.","source":"IWMC","tags":["yard","organic"]}
+{"name":"flowers","aliases":["cut flowers"],"label":"COMPOST","notes":"Yard waste compost.","source":"IWMC","tags":["yard","organic"]}
+{"name":"houseplant trimmings","aliases":["plant trimmings"],"label":"COMPOST","notes":"Yard waste compost.","source":"IWMC","tags":["yard","organic"]}
+{"name":"sawdust (untreated)","aliases":["wood dust"],"label":"COMPOST","notes":"Untreated wood dust compost.","source":"IWMC","tags":["wood","organic"]}
+{"name":"wood chips","aliases":["wood mulch"],"label":"COMPOST","notes":"Untreated wood chips compost.","source":"IWMC","tags":["wood","organic"]}
+{"name":"straw","aliases":["straw bedding"],"label":"COMPOST","notes":"Yard waste compost.","source":"IWMC","tags":["yard","organic"]}
+{"name":"hay","aliases":["hay bedding"],"label":"COMPOST","notes":"Yard waste compost.","source":"IWMC","tags":["yard","organic"]}
+{"name":"molded fiber egg carton","aliases":["paper egg carton"],"label":"COMPOST","notes":"Molded fiber cartons compost.","source":"IWMC","tags":["paper","organic"]}
+{"name":"paper muffin liner","aliases":["paper baking cup"],"label":"COMPOST","notes":"Paper baking liner compost.","source":"IWMC","tags":["paper","organic"]}
+{"name":"paper cupcake liner","aliases":["cupcake wrapper"],"label":"COMPOST","notes":"Paper baking liner compost.","source":"IWMC","tags":["paper","organic"]}
+{"name":"paper bakery bag (soiled)","aliases":["bakery bag"],"label":"COMPOST","notes":"Soiled paper bag compost.","source":"IWMC","tags":["paper","food-soiled"]}
+{"name":"paper takeout bag (soiled)","aliases":["takeout paper bag"],"label":"COMPOST","notes":"Soiled paper bag compost.","source":"IWMC","tags":["paper","food-soiled"]}
+{"name":"compostable coffee pod (certified)","aliases":["certified compostable pod"],"label":"COMPOST","notes":"Certified compostable pods only.","source":"IWMC","tags":["compostable"]}
+{"name":"certified compostable film bag","aliases":["certified compostable bag"],"label":"COMPOST","notes":"Certified compostable film bags accepted.","source":"IWMC","tags":["compostable","film"]}
+{"name":"food-soiled paperboard","aliases":["greasy paperboard"],"label":"COMPOST","notes":"Food-soiled paperboard compost.","source":"IWMC","tags":["paper","food-soiled"]}
+{"name":"soiled paper towel roll","aliases":["dirty paper towel tube"],"label":"COMPOST","notes":"Soiled paperboard compost.","source":"IWMC","tags":["paper","food-soiled"]}
+{"name":"used paper napkins","aliases":["used napkins"],"label":"COMPOST","notes":"Used paper napkins compost.","source":"IWMC","tags":["paper","food-soiled"]}
+{"name":"used tissues","aliases":["used tissue"],"label":"COMPOST","notes":"Used tissues compost.","source":"IWMC","tags":["paper","food-soiled"]}
+{"name":"paper popcorn bag (soiled)","aliases":["popcorn bag"],"label":"COMPOST","notes":"Soiled paper bag compost.","source":"IWMC","tags":["paper","food-soiled"]}
+{"name":"compostable cup sleeve (paper)","aliases":["coffee sleeve"],"label":"COMPOST","notes":"Paper sleeves compost.","source":"IWMC","tags":["paper"]}
+{"name":"food-soiled cereal box","aliases":["greasy cereal box"],"label":"COMPOST","notes":"Soiled paperboard compost.","source":"IWMC","tags":["paper","food-soiled"]}
+{"name":"cardboard drink carrier (soiled)","aliases":["paper drink tray"],"label":"COMPOST","notes":"Soiled paper carriers compost.","source":"IWMC","tags":["paper","food-soiled"]}
+{"name":"compostable plate (bamboo)","aliases":["bamboo plate"],"label":"COMPOST","notes":"Certified compostable bamboo fiber.","source":"IWMC","tags":["compostable","fiber"]}
+{"name":"compostable tray (bagasse)","aliases":["bagasse tray"],"label":"COMPOST","notes":"Certified compostable fiber tray.","source":"IWMC","tags":["compostable","fiber"]}
+{"name":"tea leaves","aliases":["loose tea"],"label":"COMPOST","notes":"Organic material compost.","source":"IWMC","tags":["food","organic"]}
+{"name":"coffee chaff","aliases":["coffee husk"],"label":"COMPOST","notes":"Organic material compost.","source":"IWMC","tags":["food","organic"]}
+{"name":"potting soil (small amounts)","aliases":["soil"],"label":"COMPOST","notes":"Small amounts accepted.","source":"IWMC","tags":["yard","organic"]}
+{"name":"food-soiled cardboard (non-waxed)","aliases":["greasy cardboard"],"label":"COMPOST","notes":"Soiled cardboard compost if not waxed.","source":"IWMC","tags":["paper","food-soiled"]}
+{"name":"pizza box insert (soiled)","aliases":["pizza circle"],"label":"COMPOST","notes":"Soiled paper insert compost.","source":"IWMC","tags":["paper","food-soiled"]}
+{"name":"used paper towel (cleaning)","aliases":["used paper towel"],"label":"COMPOST","notes":"Used paper towel compost.","source":"IWMC","tags":["paper","food-soiled"]}
+{"name":"paper grocery bag (soiled)","aliases":["dirty paper bag"],"label":"COMPOST","notes":"Soiled paper bag compost.","source":"IWMC","tags":["paper","food-soiled"]}
+{"name":"compostable salad container (fiber)","aliases":["fiber salad bowl"],"label":"COMPOST","notes":"Certified compostable fiber container.","source":"IWMC","tags":["compostable","fiber"]}
+{"name":"paper ice cream cup","aliases":["paper dessert cup"],"label":"COMPOST","notes":"Paper cups compost.","source":"IWMC","tags":["paper"]}
+{"name":"food-soiled paper tray","aliases":["paper food tray"],"label":"COMPOST","notes":"Soiled paper trays compost.","source":"IWMC","tags":["paper","food-soiled"]}
+{"name":"corrugated cardboard box (shipping)","aliases":["shipping box"],"label":"CARDBOARD_BUNDLE","notes":"Flatten and bundle corrugated cardboard.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"corrugated cardboard box (moving)","aliases":["moving box"],"label":"CARDBOARD_BUNDLE","notes":"Flatten and bundle corrugated cardboard.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"corrugated cardboard sheet","aliases":["cardboard sheet"],"label":"CARDBOARD_BUNDLE","notes":"Corrugated cardboard bundle.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"corrugated cardboard divider","aliases":["box divider"],"label":"CARDBOARD_BUNDLE","notes":"Corrugated cardboard bundle.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"appliance box (corrugated)","aliases":["appliance carton"],"label":"CARDBOARD_BUNDLE","notes":"Corrugated cardboard bundle.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"furniture box (corrugated)","aliases":["furniture carton"],"label":"CARDBOARD_BUNDLE","notes":"Corrugated cardboard bundle.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"delivery box (corrugated)","aliases":["courier box"],"label":"CARDBOARD_BUNDLE","notes":"Corrugated cardboard bundle.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"shipping box with tape","aliases":["taped shipping box"],"label":"CARDBOARD_BUNDLE","notes":"Remove excess tape; bundle.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"produce box (corrugated)","aliases":["produce carton"],"label":"CARDBOARD_BUNDLE","notes":"Corrugated cardboard bundle.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"pizza box (clean)","aliases":["clean pizza box"],"label":"CARDBOARD_BUNDLE","notes":"Clean corrugated pizza boxes can be bundled.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"bicycle box","aliases":["bike box"],"label":"CARDBOARD_BUNDLE","notes":"Corrugated cardboard bundle.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"tv box","aliases":["television box"],"label":"CARDBOARD_BUNDLE","notes":"Corrugated cardboard bundle.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"mattress box","aliases":["bed box"],"label":"CARDBOARD_BUNDLE","notes":"Corrugated cardboard bundle.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"corrugated cardboard tube (large)","aliases":["large tube"],"label":"CARDBOARD_BUNDLE","notes":"Corrugated cardboard bundle.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"corrugated cardboard tray (clean)","aliases":["cardboard tray"],"label":"CARDBOARD_BUNDLE","notes":"Clean corrugated tray.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"cardboard packing insert (corrugated)","aliases":["packing insert"],"label":"CARDBOARD_BUNDLE","notes":"Corrugated cardboard bundle.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"book shipment box","aliases":["book box"],"label":"CARDBOARD_BUNDLE","notes":"Corrugated cardboard bundle.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"online order box","aliases":["ecommerce box"],"label":"CARDBOARD_BUNDLE","notes":"Corrugated cardboard bundle.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"corrugated cardboard flat (flattened)","aliases":["flattened cardboard"],"label":"CARDBOARD_BUNDLE","notes":"Bundle flattened corrugated cardboard.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"corrugated cardboard roll","aliases":["cardboard roll"],"label":"CARDBOARD_BUNDLE","notes":"Corrugated cardboard bundle.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"corrugated cardboard display","aliases":["display carton"],"label":"CARDBOARD_BUNDLE","notes":"Corrugated cardboard bundle.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"corrugated cardboard crate","aliases":["cardboard crate"],"label":"CARDBOARD_BUNDLE","notes":"Corrugated cardboard bundle.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"corrugated cardboard mailer","aliases":["mailer box"],"label":"CARDBOARD_BUNDLE","notes":"Corrugated cardboard bundle.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"corrugated cardboard bag (stiff)","aliases":["stiff cardboard bag"],"label":"CARDBOARD_BUNDLE","notes":"Corrugated cardboard bundle.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"corrugated cardboard pallet sheet","aliases":["pallet sheet"],"label":"CARDBOARD_BUNDLE","notes":"Corrugated cardboard bundle.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"corrugated cardboard file box","aliases":["file box"],"label":"CARDBOARD_BUNDLE","notes":"Corrugated cardboard bundle.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"corrugated cardboard storage box","aliases":["storage box"],"label":"CARDBOARD_BUNDLE","notes":"Corrugated cardboard bundle.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"corrugated cardboard shoe shipper","aliases":["shoe shipper"],"label":"CARDBOARD_BUNDLE","notes":"Corrugated cardboard bundle.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"corrugated cardboard pizza box (clean, no grease)","aliases":["clean pizza box"],"label":"CARDBOARD_BUNDLE","notes":"Clean corrugated pizza boxes can be bundled.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"corrugated cardboard sandwich box (clean)","aliases":["clean sandwich box"],"label":"CARDBOARD_BUNDLE","notes":"Clean corrugated cardboard.","source":"IWMC","tags":["corrugated","cardboard"]}
+{"name":"styrofoam cup","aliases":["foam cup"],"label":"WASTE","notes":"Foam items go to waste.","source":"IWMC","tags":["foam","plastic"]}
+{"name":"styrofoam clamshell","aliases":["foam takeout box"],"label":"WASTE","notes":"Foam items go to waste.","source":"IWMC","tags":["foam","plastic"]}
+{"name":"styrofoam plate","aliases":["foam plate"],"label":"WASTE","notes":"Foam items go to waste.","source":"IWMC","tags":["foam","plastic"]}
+{"name":"foam meat tray","aliases":["meat tray"],"label":"WASTE","notes":"Foam items go to waste.","source":"IWMC","tags":["foam","plastic"]}
+{"name":"chip bag","aliases":["potato chip bag"],"label":"WASTE","notes":"Plastic film packaging to waste.","source":"IWMC","tags":["film","plastic"]}
+{"name":"candy wrapper","aliases":["chocolate wrapper"],"label":"WASTE","notes":"Plastic film packaging to waste.","source":"IWMC","tags":["film","plastic"]}
+{"name":"granola bar wrapper","aliases":["snack wrapper"],"label":"WASTE","notes":"Plastic film packaging to waste.","source":"IWMC","tags":["film","plastic"]}
+{"name":"plastic film wrap","aliases":["shrink wrap"],"label":"WASTE","notes":"Plastic film not accepted in blue bag.","source":"IWMC","tags":["film","plastic"]}
+{"name":"plastic grocery bag","aliases":["shopping bag"],"label":"WASTE","notes":"Plastic bags to waste.","source":"IWMC","tags":["film","plastic"]}
+{"name":"cling wrap","aliases":["plastic wrap"],"label":"WASTE","notes":"Plastic film not accepted in blue bag.","source":"IWMC","tags":["film","plastic"]}
+{"name":"plastic produce bag","aliases":["produce bag"],"label":"WASTE","notes":"Plastic film not accepted in blue bag.","source":"IWMC","tags":["film","plastic"]}
+{"name":"black plastic tray","aliases":["black tray"],"label":"WASTE","notes":"Black plastic not accepted.","source":"IWMC","tags":["plastic","tray"]}
+{"name":"plastic straw","aliases":["straw"],"label":"WASTE","notes":"Small plastics to waste.","source":"IWMC","tags":["plastic"]}
+{"name":"plastic cutlery","aliases":["plastic fork","plastic knife"],"label":"WASTE","notes":"Small plastics to waste.","source":"IWMC","tags":["plastic","utensil"]}
+{"name":"plastic coffee stirrer","aliases":["stir stick"],"label":"WASTE","notes":"Small plastics to waste.","source":"IWMC","tags":["plastic"]}
+{"name":"plastic lid #6","aliases":["PS lid"],"label":"WASTE","notes":"Lids other than #1-#5 go to waste.","source":"IWMC","tags":["plastic","lid"]}
+{"name":"plastic lid #7","aliases":["other plastic lid"],"label":"WASTE","notes":"Lids other than #1-#5 go to waste.","source":"IWMC","tags":["plastic","lid"]}
+{"name":"plastic lid (unmarked)","aliases":["unknown plastic lid"],"label":"WASTE","notes":"Unknown lids go to waste.","source":"IWMC","tags":["plastic","lid"]}
+{"name":"rubber band","aliases":["elastic band"],"label":"WASTE","notes":"Not accepted in recycling.","source":"IWMC","tags":["rubber"]}
+{"name":"rubber glove","aliases":["glove"],"label":"WASTE","notes":"Not accepted in recycling.","source":"IWMC","tags":["rubber"]}
+{"name":"latex glove","aliases":["disposable glove"],"label":"WASTE","notes":"Not accepted in recycling.","source":"IWMC","tags":["rubber"]}
+{"name":"diaper","aliases":["baby diaper"],"label":"WASTE","notes":"Diapers to waste.","source":"IWMC","tags":["sanitary"]}
+{"name":"pet waste bag","aliases":["dog waste bag"],"label":"WASTE","notes":"Pet waste to waste.","source":"IWMC","tags":["sanitary"]}
+{"name":"sanitary pad","aliases":["pad"],"label":"WASTE","notes":"Sanitary items to waste.","source":"IWMC","tags":["sanitary"]}
+{"name":"tampon","aliases":["tampon applicator"],"label":"WASTE","notes":"Sanitary items to waste.","source":"IWMC","tags":["sanitary"]}
+{"name":"dental floss","aliases":["floss"],"label":"WASTE","notes":"Not accepted in recycling.","source":"IWMC","tags":["sanitary"]}
+{"name":"cigarette butt","aliases":["cigarette"],"label":"WASTE","notes":"Not accepted in recycling.","source":"IWMC","tags":["sanitary"]}
+{"name":"broken ceramic","aliases":["ceramic shards"],"label":"WASTE","notes":"Ceramic to waste.","source":"IWMC","tags":["ceramic"]}
+{"name":"broken mirror","aliases":["mirror glass"],"label":"WASTE","notes":"Mirror glass to waste.","source":"IWMC","tags":["glass"]}
+{"name":"broken window glass","aliases":["window pane"],"label":"WASTE","notes":"Window glass to waste.","source":"IWMC","tags":["glass"]}
+{"name":"vacuum dust","aliases":["vacuum bag contents"],"label":"WASTE","notes":"Household dust to waste.","source":"IWMC","tags":["household"]}
+{"name":"sweepings","aliases":["floor sweepings"],"label":"WASTE","notes":"Household sweepings to waste.","source":"IWMC","tags":["household"]}
+{"name":"dryer lint","aliases":["lint"],"label":"WASTE","notes":"Lint to waste.","source":"IWMC","tags":["household"]}
+{"name":"sponge","aliases":["kitchen sponge"],"label":"WASTE","notes":"Sponges to waste.","source":"IWMC","tags":["household"]}
+{"name":"cotton swab","aliases":["q-tip"],"label":"WASTE","notes":"Cotton swabs to waste.","source":"IWMC","tags":["household"]}
+{"name":"blister pack (medicine)","aliases":["pill blister pack"],"label":"WASTE","notes":"Mixed material packaging to waste.","source":"IWMC","tags":["mixed-material"]}
+{"name":"plastic-coated paper cup with bumpy outer layer","aliases":["bumpy coffee cup"],"label":"WASTE","notes":"PEI edge case: bumpy plastic outer cups go to waste.","source":"IWMC","tags":["mixed-material","cup"]}
+{"name":"compostable plastic-looking fork (uncertified)","aliases":["biodegradable fork"],"label":"WASTE","notes":"Plastic-looking compostable items are waste unless certified film bag.","source":"IWMC","tags":["compostable","plastic"]}
+{"name":"biodegradable plastic bag (uncertified)","aliases":["biodegradable bag"],"label":"WASTE","notes":"Plastic-looking compostable items are waste unless certified film bag.","source":"IWMC","tags":["compostable","plastic"]}
+{"name":"compostable plastic clamshell (uncertified)","aliases":["compostable clamshell"],"label":"WASTE","notes":"Plastic-looking compostable items are waste unless certified.","source":"IWMC","tags":["compostable","plastic"]}
+{"name":"waxed cardboard with plastic lining","aliases":["plastic-lined cardboard"],"label":"WASTE","notes":"Layered cardboard with plastic/foil is waste.","source":"IWMC","tags":["mixed-material","cardboard"]}
+{"name":"laminated paperboard (foil-lined)","aliases":["foil-lined carton"],"label":"WASTE","notes":"Layered cardboard with foil is waste.","source":"IWMC","tags":["mixed-material","cardboard"]}
+{"name":"paper coffee cup with bumpy outer","aliases":["bumpy cup"],"label":"WASTE","notes":"PEI edge case: bumpy plastic outer layer cup is waste.","source":"IWMC","tags":["mixed-material","cup"]}
+{"name":"toothpaste tube","aliases":["plastic toothpaste tube"],"label":"WASTE","notes":"Mixed material tubes to waste.","source":"IWMC","tags":["mixed-material","plastic"]}
+{"name":"household batteries","aliases":["AA battery","AAA battery"],"label":"SPECIAL_DROP_OFF","notes":"Household batteries require special drop-off.","source":"IWMC","tags":["battery","hazardous"]}
+{"name":"lithium battery","aliases":["lithium-ion battery"],"label":"SPECIAL_DROP_OFF","notes":"Rechargeable batteries require drop-off.","source":"IWMC","tags":["battery","hazardous"]}
+{"name":"rechargeable battery","aliases":["NiMH battery"],"label":"SPECIAL_DROP_OFF","notes":"Rechargeable batteries require drop-off.","source":"IWMC","tags":["battery","hazardous"]}
+{"name":"car battery","aliases":["automotive battery"],"label":"SPECIAL_DROP_OFF","notes":"Lead-acid batteries require drop-off.","source":"IWMC","tags":["battery","hazardous"]}
+{"name":"phone battery","aliases":["cell battery"],"label":"SPECIAL_DROP_OFF","notes":"Device batteries require drop-off.","source":"IWMC","tags":["battery","hazardous"]}
+{"name":"laptop battery","aliases":["notebook battery"],"label":"SPECIAL_DROP_OFF","notes":"Device batteries require drop-off.","source":"IWMC","tags":["battery","hazardous"]}
+{"name":"power bank","aliases":["battery bank"],"label":"SPECIAL_DROP_OFF","notes":"Rechargeable batteries require drop-off.","source":"IWMC","tags":["battery","electronics"]}
+{"name":"cell phone","aliases":["mobile phone"],"label":"SPECIAL_DROP_OFF","notes":"Electronics require special drop-off.","source":"IWMC","tags":["electronics"]}
+{"name":"laptop","aliases":["notebook computer"],"label":"SPECIAL_DROP_OFF","notes":"Electronics require special drop-off.","source":"IWMC","tags":["electronics"]}
+{"name":"tablet","aliases":["iPad","tablet device"],"label":"SPECIAL_DROP_OFF","notes":"Electronics require special drop-off.","source":"IWMC","tags":["electronics"]}
+{"name":"desktop computer","aliases":["PC"],"label":"SPECIAL_DROP_OFF","notes":"Electronics require special drop-off.","source":"IWMC","tags":["electronics"]}
+{"name":"printer","aliases":["inkjet printer"],"label":"SPECIAL_DROP_OFF","notes":"Electronics require special drop-off.","source":"IWMC","tags":["electronics"]}
+{"name":"tv","aliases":["television"],"label":"SPECIAL_DROP_OFF","notes":"Electronics require special drop-off.","source":"IWMC","tags":["electronics"]}
+{"name":"monitor","aliases":["computer monitor"],"label":"SPECIAL_DROP_OFF","notes":"Electronics require special drop-off.","source":"IWMC","tags":["electronics"]}
+{"name":"keyboard","aliases":["computer keyboard"],"label":"SPECIAL_DROP_OFF","notes":"Electronics peripherals drop-off.","source":"IWMC","tags":["electronics"]}
+{"name":"mouse","aliases":["computer mouse"],"label":"SPECIAL_DROP_OFF","notes":"Electronics peripherals drop-off.","source":"IWMC","tags":["electronics"]}
+{"name":"cables","aliases":["cords","wires"],"label":"SPECIAL_DROP_OFF","notes":"Electronics peripherals drop-off.","source":"IWMC","tags":["electronics"]}
+{"name":"chargers","aliases":["power adapter"],"label":"SPECIAL_DROP_OFF","notes":"Electronics peripherals drop-off.","source":"IWMC","tags":["electronics"]}
+{"name":"headphones","aliases":["earbuds"],"label":"SPECIAL_DROP_OFF","notes":"Electronics peripherals drop-off.","source":"IWMC","tags":["electronics"]}
+{"name":"small appliance (toaster)","aliases":["toaster"],"label":"SPECIAL_DROP_OFF","notes":"Small appliances require drop-off.","source":"IWMC","tags":["electronics"]}
+{"name":"microwave","aliases":["microwave oven"],"label":"SPECIAL_DROP_OFF","notes":"Appliances require drop-off.","source":"IWMC","tags":["electronics"]}
+{"name":"propane tank","aliases":["propane cylinder"],"label":"SPECIAL_DROP_OFF","notes":"Pressurized cylinders require drop-off.","source":"IWMC","tags":["hazardous"]}
+{"name":"camping fuel canister","aliases":["butane canister"],"label":"SPECIAL_DROP_OFF","notes":"Pressurized cylinders require drop-off.","source":"IWMC","tags":["hazardous"]}
+{"name":"paint can (liquid)","aliases":["latex paint"],"label":"SPECIAL_DROP_OFF","notes":"Paint requires household hazardous drop-off.","source":"IWMC","tags":["hazardous","paint"]}
+{"name":"paint thinner","aliases":["solvent"],"label":"SPECIAL_DROP_OFF","notes":"Solvents require hazardous drop-off.","source":"IWMC","tags":["hazardous"]}
+{"name":"solvents","aliases":["chemical solvents"],"label":"SPECIAL_DROP_OFF","notes":"Hazardous chemicals require drop-off.","source":"IWMC","tags":["hazardous"]}
+{"name":"pesticides","aliases":["bug spray"],"label":"SPECIAL_DROP_OFF","notes":"Hazardous chemicals require drop-off.","source":"IWMC","tags":["hazardous"]}
+{"name":"herbicides","aliases":["weed killer"],"label":"SPECIAL_DROP_OFF","notes":"Hazardous chemicals require drop-off.","source":"IWMC","tags":["hazardous"]}
+{"name":"automotive oil","aliases":["motor oil"],"label":"SPECIAL_DROP_OFF","notes":"Used oil requires drop-off.","source":"IWMC","tags":["hazardous","oil"]}
+{"name":"oil filter","aliases":["used oil filter"],"label":"SPECIAL_DROP_OFF","notes":"Used oil filters require drop-off.","source":"IWMC","tags":["hazardous","oil"]}
+{"name":"antifreeze","aliases":["coolant"],"label":"SPECIAL_DROP_OFF","notes":"Automotive fluids require drop-off.","source":"IWMC","tags":["hazardous","oil"]}
+{"name":"brake fluid","aliases":["automotive brake fluid"],"label":"SPECIAL_DROP_OFF","notes":"Automotive fluids require drop-off.","source":"IWMC","tags":["hazardous","oil"]}
+{"name":"mercury thermometer","aliases":["thermometer"],"label":"SPECIAL_DROP_OFF","notes":"Mercury items require drop-off.","source":"IWMC","tags":["hazardous","mercury"]}
+{"name":"fluorescent bulb","aliases":["fluorescent tube"],"label":"SPECIAL_DROP_OFF","notes":"Fluorescent bulbs require drop-off.","source":"IWMC","tags":["hazardous","bulb"]}
+{"name":"cfl bulb","aliases":["compact fluorescent bulb"],"label":"SPECIAL_DROP_OFF","notes":"CFL bulbs require drop-off.","source":"IWMC","tags":["hazardous","bulb"]}
+{"name":"led bulb","aliases":["LED light bulb"],"label":"SPECIAL_DROP_OFF","notes":"LED bulbs treated as special drop-off.","source":"IWMC","tags":["bulb","electronics"]}
+{"name":"fire extinguisher","aliases":["extinguisher"],"label":"SPECIAL_DROP_OFF","notes":"Pressurized items require drop-off.","source":"IWMC","tags":["hazardous"]}
+{"name":"aerosol paint can (not empty)","aliases":["spray paint"],"label":"SPECIAL_DROP_OFF","notes":"Hazardous aerosol can requires drop-off.","source":"IWMC","tags":["hazardous"]}
+{"name":"sharps/needles","aliases":["needles"],"label":"SPECIAL_DROP_OFF","notes":"Sharps require special drop-off.","source":"IWMC","tags":["medical","hazardous"]}
+{"name":"syringes","aliases":["medical syringe"],"label":"SPECIAL_DROP_OFF","notes":"Sharps require special drop-off.","source":"IWMC","tags":["medical","hazardous"]}
+{"name":"medical sharps container","aliases":["sharps container"],"label":"SPECIAL_DROP_OFF","notes":"Sharps require special drop-off.","source":"IWMC","tags":["medical","hazardous"]}
+{"name":"smoke detector","aliases":["smoke alarm"],"label":"SPECIAL_DROP_OFF","notes":"Electronics require special drop-off.","source":"IWMC","tags":["electronics","hazardous"]}
+{"name":"thermostat (mercury)","aliases":["mercury thermostat"],"label":"SPECIAL_DROP_OFF","notes":"Mercury items require drop-off.","source":"IWMC","tags":["hazardous","mercury"]}
+{"name":"pool chemicals","aliases":["chlorine"],"label":"SPECIAL_DROP_OFF","notes":"Hazardous chemicals require drop-off.","source":"IWMC","tags":["hazardous"]}
+{"name":"household cleaners (hazardous)","aliases":["drain cleaner"],"label":"SPECIAL_DROP_OFF","notes":"Hazardous cleaners require drop-off.","source":"IWMC","tags":["hazardous"]}

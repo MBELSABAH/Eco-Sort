@@ -1,4 +1,4 @@
 flask
-openai
 flask-cors
+openai
 gunicorn
