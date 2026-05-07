@@ -171,6 +171,19 @@
 
             <section class="upload-section" id="itemScannerSection">
                 <h2>Upload Your Item</h2>
+                <div class="scanner-login-card" data-scanner-login="item">
+                    <h3>AI Scanner Access</h3>
+                    <div class="scanner-login-fields">
+                        <input type="text" class="scanner-username" placeholder="Scanner username" autocomplete="username">
+                        <input type="password" class="scanner-password" placeholder="Scanner password" autocomplete="current-password">
+                        <button class="classify-btn scanner-login-btn" type="button">Log In</button>
+                    </div>
+                    <div class="scanner-login-actions" style="display: none;">
+                        <button class="classify-btn scanner-logout-btn" type="button">Log Out</button>
+                    </div>
+                    <p class="scanner-login-message"></p>
+                </div>
+
                 <div class="upload-area" id="dropZone">
                     <div class="upload-content">
                         <div class="upload-icon">&#128247;</div>
@@ -230,6 +243,19 @@
             <section class="bag-checker-section" id="bagCheckerSection" style="display: none;">
                 <h2>Check Bags for Submission</h2>
                 <p class="section-subtitle">Scan each bag, review the score, then submit them together</p>
+                <div class="scanner-login-card" data-scanner-login="bag">
+                    <h3>AI Scanner Access</h3>
+                    <div class="scanner-login-fields">
+                        <input type="text" class="scanner-username" placeholder="Scanner username" autocomplete="username">
+                        <input type="password" class="scanner-password" placeholder="Scanner password" autocomplete="current-password">
+                        <button class="classify-btn scanner-login-btn" type="button">Log In</button>
+                    </div>
+                    <div class="scanner-login-actions" style="display: none;">
+                        <button class="classify-btn scanner-logout-btn" type="button">Log Out</button>
+                    </div>
+                    <p class="scanner-login-message"></p>
+                </div>
+
                 
                 <div class="bag-type-selector">
                     <label>Select your bag color:</label>

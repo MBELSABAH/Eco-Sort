@@ -1,7 +1,6 @@
 import os
 import base64
 import json
-import hashlib
 from datetime import datetime, timedelta
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
@@ -24,6 +23,9 @@ redemptions_db = []
 
 MANAGEMENT_ID = os.environ.get("MANAGEMENT_ID")
 MANAGEMENT_KEY = os.environ.get("MANAGEMENT_KEY")
+SCANNER_USERNAME = os.environ.get("SCANNER_USERNAME")
+SCANNER_PASSWORD = os.environ.get("SCANNER_PASSWORD")
+SCANNER_ACCESS_TOKEN = os.environ.get("SCANNER_ACCESS_TOKEN")
 VALID_BAG_TYPES = {"green", "blue", "white"}
 
 REDEEM_OPTIONS = {
@@ -139,25 +141,29 @@ def serve_static(path):
 def health():
     return jsonify({"status": "ok"})
 
-@app.route('/debug/env', methods=['GET'])
-def debug_env():
-    management_id = MANAGEMENT_ID or ""
-    management_key = MANAGEMENT_KEY or ""
+@app.route('/api/scanner/login', methods=['POST'])
+def scanner_login():
+    if not SCANNER_USERNAME or not SCANNER_PASSWORD or not SCANNER_ACCESS_TOKEN:
+        return jsonify({"ok": False, "error": "Scanner login is not configured"}), 500
 
-    management_id_set = bool(management_id)
-    management_key_set = bool(management_key)
+    data = request.json or {}
+    username = data.get('username', '')
+    password = data.get('password', '')
 
-    management_id_hash_prefix = hashlib.sha256(management_id.encode('utf-8')).hexdigest()[:8] if management_id_set else None
-    management_key_hash_prefix = hashlib.sha256(management_key.encode('utf-8')).hexdigest()[:8] if management_key_set else None
+    if username == SCANNER_USERNAME and password == SCANNER_PASSWORD:
+        return jsonify({"ok": True, "token": SCANNER_ACCESS_TOKEN})
 
-    return jsonify({
-        "management_id_set": management_id_set,
-        "management_key_set": management_key_set,
-        "management_id_length": len(management_id),
-        "management_key_length": len(management_key),
-        "management_id_sha256_prefix": management_id_hash_prefix,
-        "management_key_sha256_prefix": management_key_hash_prefix
-    })
+    return jsonify({"ok": False, "error": "Invalid scanner username or password"}), 401
+
+def require_scanner_auth():
+    expected_token = SCANNER_ACCESS_TOKEN
+    auth_header = request.headers.get("Authorization", "")
+    provided_token = ""
+    if auth_header.startswith("Bearer "):
+        provided_token = auth_header[7:].strip()
+    if not expected_token or provided_token != expected_token:
+        return jsonify({"error": "Scanner login required"}), 401
+    return None
 
 @app.route('/api/user/register', methods=['POST'])
 def register_user():
@@ -458,6 +464,10 @@ def submit_bag_batch():
 
 @app.route('/api/bag/submit', methods=['POST'])
 def submit_bag():
+    auth_error = require_scanner_auth()
+    if auth_error:
+        return auth_error
+
     if 'image' not in request.files:
         return jsonify({"error": "No image provided"}), 400
     
@@ -577,6 +587,10 @@ Respond with ONLY valid JSON in this exact format:
 
 @app.route('/classify-image', methods=['POST'])
 def classify_image():
+    auth_error = require_scanner_auth()
+    if auth_error:
+        return auth_error
+
     if 'image' not in request.files:
         return jsonify({"error": "No image provided"}), 400
     
@@ -678,6 +692,10 @@ Be specific about the item name and accurate with the bin classification."""
 
 @app.route('/check-bag', methods=['POST'])
 def check_bag():
+    auth_error = require_scanner_auth()
+    if auth_error:
+        return auth_error
+
     if 'image' not in request.files:
         return jsonify({"error": "No image provided"}), 400
     

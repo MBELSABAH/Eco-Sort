@@ -10,6 +10,8 @@ let selectedBagFile = null;
 let selectedBagType = 'green';
 let currentBagAnalysis = null;
 let stagedBags = [];
+const SCANNER_TOKEN_KEY = 'scannerAccessToken';
+const scannerLoginCards = Array.from(document.querySelectorAll('.scanner-login-card'));
 
 const BIN_CONFIG = {
     recycling: { icon: '♻️', name: 'Recycling', color: '#2D9CDB' },
@@ -59,6 +61,90 @@ const FEEDBACK_REASONS = {
         'E-waste in waste'
     ]
 };
+
+function getScannerToken() {
+    return sessionStorage.getItem(SCANNER_TOKEN_KEY) || '';
+}
+
+function setScannerLoginMessage(message, type = '') {
+    scannerLoginCards.forEach(card => {
+        const messageEl = card.querySelector('.scanner-login-message');
+        if (!messageEl) return;
+        messageEl.textContent = message;
+        messageEl.className = 'scanner-login-message';
+        if (type) {
+            messageEl.classList.add(type);
+        }
+    });
+}
+
+function updateScannerLoginUi() {
+    const isLoggedIn = !!getScannerToken();
+    scannerLoginCards.forEach(card => {
+        const fields = card.querySelector('.scanner-login-fields');
+        const actions = card.querySelector('.scanner-login-actions');
+        if (fields) fields.style.display = isLoggedIn ? 'none' : 'grid';
+        if (actions) actions.style.display = isLoggedIn ? 'block' : 'none';
+        if (isLoggedIn) {
+            const messageEl = card.querySelector('.scanner-login-message');
+            if (messageEl) {
+                messageEl.textContent = 'AI scanner unlocked.';
+                messageEl.className = 'scanner-login-message success';
+            }
+        }
+    });
+}
+
+async function scannerLogin(card) {
+    const usernameInput = card.querySelector('.scanner-username');
+    const passwordInput = card.querySelector('.scanner-password');
+    const loginBtn = card.querySelector('.scanner-login-btn');
+    const username = usernameInput ? usernameInput.value.trim() : '';
+    const password = passwordInput ? passwordInput.value : '';
+
+    if (!username || !password) {
+        setScannerLoginMessage('Enter scanner username and password.', 'error');
+        return;
+    }
+
+    loginBtn.disabled = true;
+    setScannerLoginMessage('Signing in...');
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/scanner/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+        });
+        const data = await response.json();
+        if (!response.ok || !data.ok || !data.token) {
+            throw new Error(data.error || 'Scanner login failed.');
+        }
+        sessionStorage.setItem(SCANNER_TOKEN_KEY, data.token);
+        scannerLoginCards.forEach(c => {
+            const userInput = c.querySelector('.scanner-username');
+            const passInput = c.querySelector('.scanner-password');
+            if (userInput) userInput.value = '';
+            if (passInput) passInput.value = '';
+        });
+        updateScannerLoginUi();
+    } catch (error) {
+        setScannerLoginMessage(error.message || 'Scanner login failed.', 'error');
+    } finally {
+        loginBtn.disabled = false;
+    }
+}
+
+function scannerLogout() {
+    sessionStorage.removeItem(SCANNER_TOKEN_KEY);
+    updateScannerLoginUi();
+    setScannerLoginMessage('Logged out.', 'success');
+}
+
+function ensureScannerLogin() {
+    if (getScannerToken()) return true;
+    setScannerLoginMessage('Please log in to use the AI scanner.', 'error');
+    return false;
+}
 
 function showView(viewId) {
     ['landingView', 'userLoginView', 'mgmtLoginView', 'userDashboard', 'mgmtDashboard'].forEach(id => {
@@ -170,6 +256,17 @@ document.getElementById('userLogout').addEventListener('click', () => {
 document.getElementById('mgmtLogout').addEventListener('click', () => {
     isManagement = false;
     showView('landingView');
+});
+
+scannerLoginCards.forEach(card => {
+    const loginBtn = card.querySelector('.scanner-login-btn');
+    const logoutBtn = card.querySelector('.scanner-logout-btn');
+    if (loginBtn) {
+        loginBtn.addEventListener('click', () => scannerLogin(card));
+    }
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', scannerLogout);
+    }
 });
 
 async function updateUserDashboard() {
@@ -742,6 +839,7 @@ function clearPreview() {
 
 classifyBtn.addEventListener('click', async () => {
     if (!selectedFile) return;
+    if (!ensureScannerLogin()) return;
     loading.classList.add('active');
     classifyBtn.style.display = 'none';
     
@@ -749,7 +847,11 @@ classifyBtn.addEventListener('click', async () => {
     formData.append('image', selectedFile);
     
     try {
-        const response = await fetch(`${API_BASE_URL}/classify-image`, { method: 'POST', body: formData });
+        const response = await fetch(`${API_BASE_URL}/classify-image`, {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${getScannerToken()}` },
+            body: formData
+        });
         const data = await response.json();
         if (data.error) throw new Error(data.error);
         displayResults(data);
@@ -849,6 +951,7 @@ function clearBagPreview() {
 
 checkBagBtn.addEventListener('click', async () => {
     if (!selectedBagFile) return;
+    if (!ensureScannerLogin()) return;
     bagLoading.classList.add('active');
     checkBagBtn.style.display = 'none';
     
@@ -857,7 +960,11 @@ checkBagBtn.addEventListener('click', async () => {
     formData.append('bag_type', selectedBagType);
     
     try {
-        const response = await fetch(`${API_BASE_URL}/check-bag`, { method: 'POST', body: formData });
+        const response = await fetch(`${API_BASE_URL}/check-bag`, {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${getScannerToken()}` },
+            body: formData
+        });
         const data = await response.json();
         if (data.error) throw new Error(data.error);
         displayBagResults(data);
@@ -933,7 +1040,8 @@ document.getElementById('newBagCheckBtn').addEventListener('click', () => {
             confidence: currentBagAnalysis.confidence || 'low',
             image_data: currentBagAnalysis.image_data || ''
         });
-        renderBagQueue();
+renderBagQueue();
+updateScannerLoginUi();
     }
     clearBagPreview();
     bagResultsSection.style.display = 'none';
